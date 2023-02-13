@@ -15,7 +15,7 @@ header nav {
   max-width: 1264px;
   height: var(--nav-height);
   padding: 0 1rem;
-  background-color: var(--background-color);
+  background-color: var(--header-background-color);
   font-family: var(--body-font-family);
 }
 
@@ -258,7 +258,7 @@ header nav .nav-sections ul > li > ul > li {
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
-    border-right: 8px solid transparent;    
+    border-right: 8px solid transparent;
     border-bottom: 8px solid var(--highlight-background-color);
   }
 
