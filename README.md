@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# partsasist.com
+Franklin site for https://partsasist.com/
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--vg-partsasist--hlxsites.hlx.page/
+- Live: https://main--vg-partsasist--hlxsites.hlx.live/
 
 ## Installation
 
