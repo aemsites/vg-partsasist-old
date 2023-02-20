@@ -24,6 +24,7 @@
   --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+  --cards-text-font-family: 'Roboto Condensed', sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
