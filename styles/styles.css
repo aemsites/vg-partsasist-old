@@ -240,6 +240,6 @@ main .section.highlight {
 main .section.heromain {
   height: 100vh;
   background-size: cover;
-  background-image: url("https://main--vg-partsasist--hlxsites.hlx.page/media_1ad6aab20da76e42ed43f1617ec68fb23b5da9c32.png?width=2000&format=webply&optimize=medium");
+  background-image: url('https://main--vg-partsasist--hlxsites.hlx.page/media_1ad6aab20da76e42ed43f1617ec68fb23b5da9c32.png?width=2000&format=webply&optimize=medium');
   color: #fff;
 }
