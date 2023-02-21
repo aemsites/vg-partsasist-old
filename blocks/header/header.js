@@ -108,6 +108,16 @@ function addSectionsId() {
   document.querySelectorAll('[data-id]').forEach((tag) => { tag.id = tag.dataset.id; });
 }
 
+function setActiveLink(navLis) {
+  const { hash } = window.location;
+  const activeLink = navLis.filter((li) => {
+    const { hash: aHash } = li.firstChild;
+    return aHash === hash;
+  });
+  const link = hash !== '' ? activeLink[0] : navLis[0];
+  link.classList.add('active');
+}
+
 function addActiveClassListener(navLinks) {
   const navUl = navLinks[0].parentElement;
   const loginBtn = navUl.querySelector('.button');
@@ -151,12 +161,11 @@ export default async function decorate(block) {
   if (navSections) {
     const navLis = navSections.querySelectorAll(':scope > ul > li');
     const navLinks = [...navLis].slice(0, -1);
-    const activeLink = navLis[0];
     if (MQ.matches) decorateButtons(navSections);
     [...navLis].at(-1).querySelector('a').target = '_blank';
     cleanAnchorNavTags(navLinks);
     addSectionsId(); // for anchor tag navigation
-    activeLink.classList.add('active');
+    setActiveLink(navLinks);
 
     navLis.forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
