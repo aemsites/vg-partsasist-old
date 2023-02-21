@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-
 .cards-container {
     padding: 0 !important;
     margin: 0;
     box-sizing: border-box;
-    color: white;
+    color: var(--cards-text-color-white);
 }
 
 .cards > ul {
@@ -71,15 +69,17 @@
 
 @media (max-width: 1200px) {
     .cards > ul {
-        width: 90%;
+        width: 80%;
     }
 }
 
 @media (max-width: 992px) {
     .cards > ul {
-        display: flex;
         flex-direction: column;
+        align-items: center;
         width: 80%;
+        margin: auto;
+
     }
 
     .cards > ul > li {
@@ -107,16 +107,10 @@
 
 @media (max-width: 768px) {
     .cards > ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 540px;
-        margin: auto;
-        overflow: hidden;
+        width: 100%;
     }
 
     .cards > ul > li {
-        justify-content: center;
         box-shadow: none;
         outline: none;
     }

@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
  :root {
   /* colors */
   --link-color: #035fe6;
@@ -19,6 +21,7 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #000;
+  --cards-text-color-white: #fff;
 
   /* fonts */
   --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
