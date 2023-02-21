@@ -153,7 +153,7 @@ export default async function decorate(block) {
     const navLinks = [...navLis].slice(0, -1);
     const activeLink = navLis[0];
     if (MQ.matches) decorateButtons(navSections);
-    [...navLis].at(-1).querySelector('.button').target = '_blank';
+    [...navLis].at(-1).querySelector('a').target = '_blank';
     cleanAnchorNavTags(navLinks);
     addSectionsId(); // for anchor tag navigation
     activeLink.classList.add('active');
