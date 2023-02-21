@@ -1,7 +1,7 @@
-import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
+import { readBlockConfig, decorateIcons, decorateButtons } from '../../scripts/lib-franklin.js';
 
 // media query match that indicates mobile/tablet width
-const MQ = window.matchMedia('(min-width: 900px)');
+const MQ = window.matchMedia('(min-width: 992px)');
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -85,6 +85,42 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function addMQListener(nav, navSection, navSections) {
+  navSection.addEventListener('click', () => {
+    if (!MQ.matches) {
+      const expanded = navSection.getAttribute('aria-expanded') === 'true';
+      toggleAllNavSections(navSections);
+      navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    }
+  });
+}
+
+function cleanAnchorNavTags(navLis) {
+  navLis.forEach((li) => {
+    const navLink = li.querySelector('a');
+    const { hash } = new URL(navLink.href);
+    navLink.setAttribute('href', hash);
+  });
+}
+
+function addSectionsId() {
+  document.querySelectorAll('[data-id]').forEach((tag) => { tag.id = tag.dataset.id; });
+}
+
+function addActiveClassListener(navLinks) {
+  const navUl = navLinks[0].parentElement;
+  const loginBtn = navUl.querySelector('.button');
+  navUl.onclick = (e) => {
+    const { tagName } = e.target;
+    if (tagName !== 'A' || e.target === loginBtn) return;
+    navLinks.forEach((li) => {
+      li.classList.remove('active');
+    });
+    e.target.parentElement.classList.add('active');
+  };
+}
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -97,33 +133,37 @@ export default async function decorate(block) {
   const navPath = config.nav || '/nav';
   const resp = await fetch(`${navPath}.plain.html`);
 
-  if (resp.ok) {
-    const html = await resp.text();
+  if (!resp.ok) return;
+  const html = await resp.text();
 
-    // decorate nav DOM
-    const nav = document.createElement('nav');
-    nav.id = 'nav';
-    nav.innerHTML = html;
+  // decorate nav DOM
+  const nav = document.createElement('nav');
+  nav.id = 'nav';
+  nav.innerHTML = html;
 
-    const classes = ['brand', 'sections', 'tools'];
-    classes.forEach((c, i) => {
-      const section = nav.children[i];
-      if (section) section.classList.add(`nav-${c}`);
+  const classes = ['brand', 'sections'];
+  classes.forEach((c, i) => {
+    const section = nav.children[i];
+    if (section) section.classList.add(`nav-${c}`);
+  });
+
+  const navSections = nav.querySelector('.nav-sections');
+  if (navSections) {
+    const navLis = navSections.querySelectorAll(':scope > ul > li');
+    const navLinks = [...navLis].slice(0, -1);
+    const activeLink = navLis[0];
+    if (MQ.matches) decorateButtons(navSections);
+    [...navLis].at(-1).querySelector('.button').target = '_blank';
+    cleanAnchorNavTags(navLinks);
+    addSectionsId(); // for anchor tag navigation
+    activeLink.classList.add('active');
+
+    navLis.forEach((navSection) => {
+      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+      addMQListener(nav, navSection, navSections);
     });
-
-    const navSections = nav.querySelector('.nav-sections');
-    if (navSections) {
-      navSections.querySelectorAll(':scope > ul > li').forEach((navSection) => {
-        if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-        navSection.addEventListener('click', () => {
-          if (MQ.matches) {
-            const expanded = navSection.getAttribute('aria-expanded') === 'true';
-            toggleAllNavSections(navSections);
-            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          }
-        });
-      });
-    }
+    // add onclick to change active class
+    addActiveClassListener(navLinks);
 
     // hamburger for mobile
     const hamburger = document.createElement('div');
@@ -137,8 +177,8 @@ export default async function decorate(block) {
     // prevent mobile nav behavior on window resize
     toggleMenu(nav, navSections, MQ.matches);
     MQ.addEventListener('change', () => toggleMenu(nav, navSections, MQ.matches));
-
-    decorateIcons(nav);
-    block.append(nav);
   }
+
+  decorateIcons(nav);
+  block.append(nav);
 }
