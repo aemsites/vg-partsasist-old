@@ -10,7 +10,12 @@
  * governing permissions and limitations under the License.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* fonts faces */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto-Regular.woff") format("woff");
+  font-style: normal; 
+}
 
  :root {
   /* colors */
@@ -24,10 +29,11 @@
   --cards-text-color-white: #fff;
 
   /* fonts */
+  
   --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-  --cards-title-font-family: roboto, sans-serif;
+  --cards-title-font-family: Roboto;
   --cards-text-font-family: 'Roboto Condensed', sans-serif;
 
   /* body sizes */

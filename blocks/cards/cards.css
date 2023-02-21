@@ -50,12 +50,13 @@
 
 .cards.block .cards-card-body h5 {
     text-transform: uppercase;
-    font-family: var(--cards-text-font-family);
+    font-family: var(--cards-title-font-family);
     font-size: var(--heading-font-size-s);
     margin-bottom: 1rem;
     font-weight: 500;
     letter-spacing: .4px;
     line-height: 1.2;
+
 }
 
 .cards.block .cards-card-body p {
