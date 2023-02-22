@@ -33,7 +33,7 @@
     text-align: center;
 }
 
-.cards.block > ul > li img {
+.cards.block img {
     width: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -48,7 +48,7 @@
     margin-top: 0;
 }
 
-.cards.block .cards-card-body h5 {
+.cards.block h5 {
     text-transform: uppercase;
     font-family: var(--cards-title-font-family);
     font-size: var(--heading-font-size-s);
@@ -59,7 +59,7 @@
 
 }
 
-.cards.block .cards-card-body p {
+.cards.block p {
     font-size: 1.3rem;
     margin: 0;
     font-family: var(--cards-text-font-family);
@@ -84,33 +84,33 @@
     outline: none;
 }
 
-.cards.alternating > ul > li .cards-card-body {
+.cards.alternating li .cards-card-body {
     text-align: left;
     width: 40%;
     margin: auto 0;
 }
 
-.cards.alternating > ul > li:nth-child(odd) {
+.cards.alternating li:nth-child(odd) {
     flex-direction: row;
 }
 
-.cards.alternating > ul > li:nth-child(odd) .cards-card-body {
+.cards.alternating li:nth-child(odd) .cards-card-body {
     padding: 0 15px 0 50px;
 }
 
-.cards.alternating > ul > li:nth-child(even)  {
+.cards.alternating li:nth-child(even)  {
     flex-direction: row-reverse;
 }
 
-.cards.alternating > ul > li:nth-child(even) .cards-card-body {
+.cards.alternating li:nth-child(even) .cards-card-body {
     padding: 0 50px 0 15px;
 }
 
-.cards.alternating > ul > li .cards-card-image img {
+.cards.alternating .cards-card-image img {
     aspect-ratio: auto 1600 / 900;
 }
 
-.cards.alternating > ul > li .cards-card-body h3 {
+.cards.alternating .cards-card-body h3 {
     text-transform: uppercase;
     font-family: var(--cards-title-font-family);
     font-size: var(--heading-font-size-s);
@@ -120,7 +120,7 @@
     line-height: 1.2;
 }
 
-.cards.alternating > ul > li .cards-card-body p {
+.cards.alternating .cards-card-body p {
     font-size: var(--body-font-size-s);
     margin-bottom: 1rem;
 }
@@ -158,21 +158,21 @@
         margin: 0;
     }
 
-    .cards.alternating > ul > li,
-    .cards.alternating > ul > li:nth-child(odd),
-    .cards.alternating > ul > li:nth-child(even) {
+    .cards.alternating li,
+    .cards.alternating li:nth-child(odd),
+    .cards.alternating li:nth-child(even) {
         flex-direction: column;
         box-shadow: none;
         outline: none;
     }
 
-    .cards.alternating > ul > li:nth-child(odd) .cards-card-body,
-    .cards.alternating > ul > li:nth-child(even) .cards-card-body {
+    .cards.alternating li:nth-child(odd) .cards-card-body,
+    .cards.alternating li:nth-child(even) .cards-card-body {
         padding: 0 15px 0 50px;
         width: 100%;
     }
 
-    .cards.block > ul > li:nth-child(even) {
+    .cards.block li:nth-child(even) {
         background-color: var(--background-color);
     }
 }
