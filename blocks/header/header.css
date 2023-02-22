@@ -14,6 +14,15 @@ html {
 }
 
 /* header and nav layout */
+header .header {
+  background-color: var(--header-background-color);
+  height: var(--nav-height);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -34,25 +43,9 @@ header nav {
   font-family: var(--body-font-family);
 }
 
-header nav[aria-expanded=true] {
-  grid-template:
-    'brand hamburger' var(--nav-height)
-    'sections sections' 1fr;
-  overflow-y: auto;
-  min-height: 50%;
-}
-
-header nav::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 200vw;
-  height: var(--nav-height);
-  transform: translateX(-50%);
-  background-color: var(--header-background-color);
-  z-index: -1;
+header .header.transparent,
+header .header.transparent nav {
+  background-color: transparent;
 }
 
 header nav p {
@@ -80,7 +73,6 @@ header nav[aria-expanded=true] .nav-hamburger {
 }
 
 header nav .nav-hamburger button {
-  height: 22px;
   margin: 0;
   border: 0;
   border-radius: 0;
@@ -90,21 +82,15 @@ header nav .nav-hamburger button {
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
 }
 
 header nav[aria-expanded="true"] .nav-hamburger button {
-  position: relative;
-}
-
-header nav[aria-expanded="true"] .nav-hamburger button::before {
-  content: '';
-  position: absolute;
   background-color: var(--c-grey);
-  width: 3rem;
-  height: 3rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 header nav .nav-hamburger-icon,
@@ -169,11 +155,6 @@ header .nav-brand {
   line-height: 1;
 }
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
-}
-
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
@@ -196,6 +177,7 @@ header nav .nav-sections ul  {
   line-height: 3.5;
   display: flex;
   flex-direction: column;
+  margin: auto -1rem;
 }
 
 header nav .nav-sections ul > li,
@@ -231,6 +213,11 @@ header nav .nav-sections ul a {
   /* header and nav layout */
   header nav {
     padding: 0 2rem;
+  }
+
+  /* sections */
+  header nav .nav-sections ul  {
+    margin: auto -2rem;
   }
 }
 

@@ -1,6 +1,6 @@
 indices:
   partsasist:
-    default:
+    # default:
       include:
         - '/**'
       exclude:
