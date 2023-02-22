@@ -24,7 +24,7 @@ sampleRUM('cwv');
 loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
   type: 'text/javascript',
   charset: 'UTF-8',
-  'data-domain-script': '590e5ab0-645c-4477-8464-061e57925731',
+  'data-domain-script': '078b3e5b-9ab3-4e0f-99e4-1d0b7ff41e53',
 });
 
 window.OptanonWrapper = () => {};
