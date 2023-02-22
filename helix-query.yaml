@@ -20,5 +20,3 @@ indices:
         description:
           select: head > meta[name="description"]
           value: attribute(el, "content")
-
-
