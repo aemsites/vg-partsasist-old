@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    background-image: url('/media/featurecard_bg.jpg');
+    background-image: url('/media/featurecard_bg.avif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 75%;
