@@ -15,5 +15,20 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   footer.innerHTML = html;
   await decorateIcons(footer);
+  const lcol = document.createElement('div');
+  lcol.classList.add('footer-lcol');
+  const mcol = document.createElement('div');
+  mcol.classList.add('footer-mcol');
+  const rcol = document.createElement('div');
+  rcol.classList.add('footer-rcol');
+  const parent = footer.querySelector('div > div');
+  parent.classList.add('footer-nav');
+  const lcolNav = footer.querySelector('div > div > ul');
+  lcol.append(lcolNav);
+  const mcolNav = footer.querySelector('div > div > p');
+  mcol.append(mcolNav);
+  const rcolNav = footer.querySelector('div > div > p');
+  rcol.append(rcolNav);
+  parent.append(lcol, mcol, rcol);
   block.append(footer);
 }

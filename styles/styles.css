@@ -25,15 +25,14 @@
   --header-background-color: #1c2735;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --text-color: #fff;
   --cards-text-color-white: #fff;
-
-  /* fonts */
   
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  /* fonts */
+  --body-font-family: roboto, "Roboto fallback", noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-  --cards-title-font-family: roboto, "Roboto fallback";
+  --cards-title-font-family: roboto, "Roboto fallback", noto, sans-serif;
   --cards-text-font-family: 'Roboto Condensed', sans-serif;
 
   /* body sizes */
@@ -66,10 +65,6 @@ body {
 
 body.appear {
   display: unset;
-}
-
-header {
-  height: var(--nav-height);
 }
 
 h1, h2, h3,
