@@ -1,2 +1,8 @@
 /* below the fold CSS goes here */
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,900&display=swap");
+
+/* fonts faces */
+@font-face {
+  font-family: roboto;
+  src: url("../fonts/Roboto-Regular.woff") format("woff");
+  font-style: normal; 
+}
