@@ -58,8 +58,10 @@ export default function decorate(block) {
 
         parentElHeight = headerHeight + panelHeight;
         activeItemId = header.id;
+        buttonEl.setAttribute('aria-expanded', "true");
       } else {
         activeItemId = null;
+        buttonEl.setAttribute('aria-expanded', "false");
       }
 
       parentEl.setAttribute('style', `height: ${parentElHeight}px`);
