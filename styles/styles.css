@@ -286,3 +286,10 @@ main .section.heromain {
   list-style: none;
 }
 
+/* indent paragraphs which are part of the list,
+   workaround for https://github.com/adobe/helix-docx2md/issues/200 */
+.disclosure .full-policy > .default-content-wrapper > p,
+.disclosure .full-policy > .default-content-wrapper > ul{
+  margin-left: 5rem;
+}
+
