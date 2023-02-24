@@ -4,12 +4,10 @@ export default function decorate(block) {
 
   if (header) {
     header.classList.add('section-divider-header');
-    console.log(header);
   }
 
   if (subheader) {
     subheader.classList.add('section-divider-subheader');
-    console.log(subheader);
   }
 
   if (desciption.length) {
