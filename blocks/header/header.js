@@ -47,7 +47,7 @@ function toggleAllNavSections(sections, expanded = false) {
 }
 
 function setupKeyboardAttributes(navDrops) {
-  if (!MQ.matches) {
+  if (!isDesktop.matches) {
     navDrops.forEach((drop) => {
       drop.removeAttribute('role');
       drop.removeAttribute('tabindex');
@@ -81,14 +81,14 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   const navDrops = navSections.querySelectorAll('.nav-drop');
   setupKeyboardAttributes(navDrops);
   const { addEventListener: add, removeEventListener: remove } = window;
-  const listener = !expanded || MQ.matches ? add : remove;
+  const listener = !expanded || isDesktop.matches ? add : remove;
   // collapse menu on escape press
   listener.bind(window)('keydown', closeOnEscape);
 }
 
 function addMQListener(nav, navSection, navSections) {
   navSection.addEventListener('click', () => {
-    if (!MQ.matches) {
+    if (!isDesktop.matches) {
       const expanded = navSection.getAttribute('aria-expanded') === 'true';
       toggleAllNavSections(navSections);
       navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
@@ -170,7 +170,7 @@ export default async function decorate(block) {
 
   if (!resp.ok) return;
   const html = await resp.text();
-  block.classList.toggle('transparent', MQ.matches && window.scrollY <= 70);
+  block.classList.toggle('transparent', isDesktop.matches && window.scrollY <= 70);
 
   // decorate nav DOM
   const nav = document.createElement('nav');
@@ -188,7 +188,7 @@ export default async function decorate(block) {
     const navLis = navSections.querySelectorAll(':scope > ul > li');
     const navLinks = [...navLis].slice(0, -1);
     const sections = document.querySelectorAll('[data-id]');
-    if (MQ.matches) {
+    if (isDesktop.matches) {
       decorateButtons(navSections);
       addScrollListener(block);
     }
@@ -215,8 +215,8 @@ export default async function decorate(block) {
     nav.prepend(hamburger);
     nav.setAttribute('aria-expanded', 'false');
     // prevent mobile nav behavior on window resize
-    toggleMenu(nav, navSections, MQ.matches);
-    MQ.addEventListener('change', () => toggleMenu(nav, navSections, MQ.matches));
+    toggleMenu(nav, navSections, isDesktop.matches);
+    isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
   }
 
   decorateIcons(nav);
