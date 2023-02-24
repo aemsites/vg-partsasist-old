@@ -14,7 +14,7 @@
 @font-face {
   font-family: "Roboto fallback";
   src: url("../fonts/Roboto-Regular.woff") format("woff");
-  font-style: normal; 
+  font-style: normal;
 }
 
  :root {
@@ -27,7 +27,7 @@
   --highlight-background-color: #ccc;
   --text-color: #fff;
   --cards-text-color-white: #fff;
-  
+
   /* fonts */
   --body-font-family: roboto, "Roboto fallback", noto, sans-serif;
   --heading-font-family: var(--body-font-family);
@@ -283,17 +283,18 @@ main .section.heromain {
   padding-top: 1em;
 }
 
-.disclosure .full-policy ol ol {
-  list-style-type: upper-alpha;
+/* indent headers and paragraphs to make them look like a nested list.  */
+.disclosure .full-policy h3 {
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
 }
 
-/* Hide the parent list number if the child list continues. */
-.disclosure .full-policy ol > li:has(ol[start])  {
-  list-style: none;
+.disclosure .full-policy h4 {
+  margin-left: 3.5rem;
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
 }
 
-/* indent paragraphs which are part of the list,
-   workaround for https://github.com/adobe/helix-docx2md/issues/200 */
 .disclosure .full-policy > .default-content-wrapper > p,
 .disclosure .full-policy > .default-content-wrapper > ul{
   margin-left: 5rem;
