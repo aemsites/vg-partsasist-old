@@ -20,19 +20,21 @@ export default function decorate(block) {
     buttonEl.setAttribute('aria-expanded', 'false');
     buttonEl.setAttribute('aria-controls', 'collapseOne');
 
-    const textEl = document.createElement('div');
-    textEl.classList.add('panel-text');
-    textEl.innerHTML = header.innerHTML;
+    const buttonTextEl = document.createElement('div');
+    buttonTextEl.classList.add('button-text');
+    buttonTextEl.innerHTML = header.innerHTML;
 
     const iconEl = document.createElement('div');
     iconEl.classList.add('accordion-icon');
 
     buttonEl.appendChild(iconEl);
-    buttonEl.appendChild(textEl);
+    buttonEl.appendChild(buttonTextEl);
     header.innerHTML = '';
     header.classList.add('accordion-header');
     header.appendChild(buttonEl);
 
+    // accordion-panel-hidden class is for initial hiding the accordion panel
+    // the accordion-panel-hidden class should be removed after initil render
     panel.classList.add('accordion-panel', 'accordion-panel--hidden');
 
     header.id = `accordion-${getId()}`;
@@ -44,6 +46,7 @@ export default function decorate(block) {
 
       panel.classList.remove('accordion-panel--hidden');
       parentEl.classList.toggle('accordion--collapsed');
+      parentEl.setAttribute('style', `height: ${headerHeight}px`);
 
       // closing previously selected accordion
       if (activeItemId && activeItemId !== header.id) {
@@ -54,7 +57,6 @@ export default function decorate(block) {
         const panelHeight = panel.getBoundingClientRect().height;
 
         parentElHeight = headerHeight + panelHeight;
-        parentEl.setAttribute('style', `height: ${headerHeight + panelHeight}px`);
         activeItemId = header.id;
       } else {
         activeItemId = null;
@@ -62,13 +64,5 @@ export default function decorate(block) {
 
       parentEl.setAttribute('style', `height: ${parentElHeight}px`);
     });
-
-    setTimeout(() => {
-      const headerHeight = header.getBoundingClientRect().height;
-
-      panel.classList.remove('accordion-panel--hidden');
-
-      parentEl.setAttribute('style', `height: ${headerHeight}px`);
-    }, 0);
   });
 }

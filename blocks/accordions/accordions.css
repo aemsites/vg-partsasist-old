@@ -1,15 +1,3 @@
-.accordions-container {
-  background-image: url('/media/parallax3.png'), url('/media/parallax4.png');
-  background-repeat: no-repeat;
-  background-position: top left, top right;
-}
-
-@media (max-width: 992px) {
-  .accordions-container{
-    background-image: none;
-  }
-}
-
 .accordions {
   color: white;
 }
@@ -101,7 +89,19 @@
     min-width: 25px;
   }
 
-  .panel-text {
+  .button-text {
     line-height: 20px;
+  }
+}
+
+.faq-accordions.accordions-container {
+  background-image: url('/media/parallax3.png'), url('/media/parallax4.png');
+  background-repeat: no-repeat;
+  background-position: top left, top right;
+}
+
+@media (max-width: 992px) {
+  .faq-accordions.accordions-container {
+    background-image: none;
   }
 }
