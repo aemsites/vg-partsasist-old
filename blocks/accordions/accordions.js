@@ -1,5 +1,4 @@
 const idGenerator = () => {
-  const idGenerator = () => {
   let id = 0;
 
   return () => {
