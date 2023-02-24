@@ -266,12 +266,12 @@ main .section.heromain {
 /* The injected widget should be customized in the SDK UI by an administrator.
  * see https://my.onetrust.com/articles/en_US/Knowledge/UUID-8a1fff4c-95c6-be5f-4369-228aa86283c6
  * Just overriding the bare minimum to make it readable: */
-.disclosure .ot-sdk-container * {
+.disclosure #ot-sdk-cookie-policy * {
   background: none !important;
   color: var(--text-color) !important;
 }
 
-.disclosure .ot-sdk-container a:any-link {
+.disclosure #ot-sdk-cookie-policy a:any-link {
   color: var(--link-color) !important;
 }
 
