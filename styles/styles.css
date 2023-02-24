@@ -250,7 +250,7 @@ main .section.heromain {
   color: #fff;
 }
 
-main .section.herofaq {
+/* main .section.hero-faq {
   height: 100vh;
   background-size: cover;
   background-image: url('/media/faq_heading.jpeg');
@@ -262,27 +262,27 @@ main .section.herofaq {
   justify-content: center;
 }
 
-.section.herofaq #frequently-asked-questions {
+.section.hero-faq #frequently-asked-questions {
   text-transform: uppercase;
   font-size: var(--heading-font-size-xl);
   margin-top: 0;
 }
 
-.section.herofaq p:nth-child(2) {
+.section.hero-faq p:nth-child(2) {
   text-transform: uppercase;
   font-size: var(--heading-font-size-xs);
 }
 
-.section.herofaq p:nth-child(3) {
+.section.hero-faq p:nth-child(3) {
   font-size: var( --body-font-size-xs);
 }
 
 @media (min-width: 768px) {
-  .section.herofaq > .default-content-wrapper {
+  .section.hero-faq > .default-content-wrapper {
     max-width: 50%;
   }
 
-  .section.herofaq #frequently-asked-questions {
+  .section.hero-faq #frequently-asked-questions {
     font-size: var(--heading-font-size-xxl);
   }
-}
+} */
