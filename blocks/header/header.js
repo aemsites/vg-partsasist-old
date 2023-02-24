@@ -219,8 +219,8 @@ export default async function decorate(block) {
     // prevent mobile nav behavior on window resize
     toggleMenu(nav, navSections, MQ.matches);
     MQ.addEventListener('change', () => toggleMenu(nav, navSections, MQ.matches));
-
-    decorateIcons(nav);
-    block.append(nav);
   }
+
+  decorateIcons(nav);
+  block.append(nav);
 }
