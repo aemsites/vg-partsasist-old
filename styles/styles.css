@@ -248,7 +248,7 @@ main .section.heromain {
   --heading-font-size-xxl: 55px;
 }
 
-.disclosure p {
+.disclosure p, .disclosure li {
   font-size: var(--body-font-size-s);
 }
 
@@ -268,3 +268,21 @@ main .section.heromain {
    /* Just overriding the bare minimum to make it readable: */
   background: none;
 }
+
+.disclosure .columns > div {
+  align-items: flex-start;
+}
+
+.disclosure .full-policy li {
+  padding-top: 1em;
+}
+
+.disclosure .full-policy ol ol {
+  list-style-type: upper-alpha;
+}
+
+/* Hide the parent list number if the child list continues. */
+.disclosure .full-policy ol > li:has(ol[start])  {
+  list-style: none;
+}
+
