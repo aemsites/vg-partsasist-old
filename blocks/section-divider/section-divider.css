@@ -3,13 +3,13 @@
   position: relative;
 }
 
-.section-divider .section-divider--header {
+.section-divider .section-divider-header {
   margin: 0;
   font-size: var(--heading-font-size-xl);
   margin-bottom: 8px;
 }
 
-.section-divider .section-divider--subheader {
+.section-divider .section-divider-subheader {
   margin: 0;
   font-size: var(--body-font-size-s);
   margin-bottom: 16px;
@@ -20,17 +20,17 @@
   font-size: var(--heading-font-size-xs);
 }
 
-.section-divider .section-divider--background {
+.section-divider .section-divider-background {
   margin: 0 -16px;
 }
 
 @media (min-width: 769px) {
-  .section-divider .section-divider--header {
+  .section-divider .section-divider-header {
     font-size: var(--heading-font-size-xxl);
     margin-bottom: 10px;
   }
 
-  .section-divider .section-divider--subheader {
+  .section-divider .section-divider-subheader {
     margin: 0;
     font-size: var(--body-font-size-m);
     margin-bottom: 20px;

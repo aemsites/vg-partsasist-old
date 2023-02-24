@@ -3,12 +3,12 @@ export default function decorate(block) {
   const desciption = block.querySelectorAll('h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p');
 
   if (header) {
-    header.classList.add('section-divider--header');
+    header.classList.add('section-divider-header');
     console.log(header);
   }
 
   if (subheader) {
-    subheader.classList.add('section-divider--subheader');
+    subheader.classList.add('section-divider-subheader');
     console.log(subheader);
   }
 

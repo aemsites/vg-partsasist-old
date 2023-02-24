@@ -1,8 +1,13 @@
 const idGenerator = () => {
+  const idGenerator = () => {
   let id = 0;
 
-  return () => ++id;
-}
+  return () => {
+    id += 1;
+
+    return id;
+  };
+};
 
 const getId = idGenerator();
 
@@ -35,17 +40,17 @@ export default function decorate(block) {
 
     // accordion-panel-hidden class is for initial hiding the accordion panel
     // the accordion-panel-hidden class should be removed after initil render
-    panel.classList.add('accordion-panel', 'accordion-panel--hidden');
+    panel.classList.add('accordion-panel', 'accordion-panel-hidden');
 
     header.id = `accordion-${getId()}`;
-    parentEl.classList.add('accordion-wrapper', 'accordion--collapsed');
+    parentEl.classList.add('accordion-wrapper', 'accordion-collapsed');
 
     header.addEventListener('click', () => {
       const headerHeight = header.getBoundingClientRect().height;
       let parentElHeight = headerHeight;
 
-      panel.classList.remove('accordion-panel--hidden');
-      parentEl.classList.toggle('accordion--collapsed');
+      panel.classList.remove('accordion-panel-hidden');
+      parentEl.classList.toggle('accordion-collapsed');
       parentEl.setAttribute('style', `height: ${headerHeight}px`);
 
       // closing previously selected accordion
@@ -53,15 +58,15 @@ export default function decorate(block) {
         document.querySelector(`#${activeItemId}`).click();
       }
 
-      if (!parentEl.classList.contains('accordion--collapsed')) {
+      if (!parentEl.classList.contains('accordion-collapsed')) {
         const panelHeight = panel.getBoundingClientRect().height;
 
         parentElHeight = headerHeight + panelHeight;
         activeItemId = header.id;
-        buttonEl.setAttribute('aria-expanded', "true");
+        buttonEl.setAttribute('aria-expanded', 'true');
       } else {
         activeItemId = null;
-        buttonEl.setAttribute('aria-expanded', "false");
+        buttonEl.setAttribute('aria-expanded', 'false');
       }
 
       parentEl.setAttribute('style', `height: ${parentElHeight}px`);

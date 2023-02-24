@@ -24,7 +24,6 @@
   position: relative;
   white-space: normal;
   display: flex;
-  align-items: center;
   overflow: visible;
   line-height: 39px;
   align-items: flex-start;
@@ -55,7 +54,7 @@
   border-radius: 0;
 }
 
-.accordions .accordion--collapsed .accordion-icon {
+.accordions .accordion-collapsed .accordion-icon {
   background-image: url("/media/plus.png");
 }
 
@@ -66,7 +65,7 @@
   font-weight: 400;
 }
 
-.accordions .accordion-panel--hidden {
+.accordions .accordion-panel-hidden {
   display: none;
 }
 
