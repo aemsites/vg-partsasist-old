@@ -476,32 +476,56 @@ export function decorateTemplateAndTheme() {
 }
 
 /**
+ * Check button type and return the right classList to be added to the anchor tag, if needed
+ * @param {HTMLElement} up Anchor tag parent Element
+ * @returns {({string, HTMLElement} | null)} {string, HTMLElement} or null
+ */
+function setButtonClassName(up) {
+  const twoUp = up.parentElement;
+  const buttonTags = {
+    P: 'P',
+    DIV: 'DIV',
+    STRONG: 'STRONG',
+    EM: 'EM',
+  };
+  const upLength = up.childNodes.length;
+  const twoUpLength = twoUp.childNodes.length;
+  const isButton = upLength === 1 && buttonTags[up.tagName] !== undefined;
+  const isInPTag = twoUpLength === 1 && twoUp.tagName === buttonTags.P;
+  const isPrimary = isButton && up.tagName === buttonTags.STRONG && isInPTag;
+  const isSecondary = isButton && up.tagName === buttonTags.EM && isInPTag;
+
+  if (isPrimary) { // primary CTA button link
+    return { classList: 'button primary', el: twoUp };
+  }
+
+  if (isSecondary) { // secondary CTA button link
+    return { classList: 'button secondary', el: twoUp };
+  }
+
+  if (isButton) { // default navigational link
+    return { classList: 'button', el: up };
+  }
+
+  return null;
+}
+
+/**
  * decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
  */
-
 export function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
-    a.title = a.title || a.textContent;
-    if (a.href !== a.textContent) {
-      const up = a.parentElement;
-      const twoup = a.parentElement.parentElement;
-      if (!a.querySelector('img')) {
-        if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
-          a.className = 'button primary'; // default
-          up.classList.add('button-container');
-        }
-        if (up.childNodes.length === 1 && up.tagName === 'STRONG'
-          && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
-          a.className = 'button primary';
-          twoup.classList.add('button-container');
-        }
-        if (up.childNodes.length === 1 && up.tagName === 'EM'
-          && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
-          a.className = 'button secondary';
-          twoup.classList.add('button-container');
-        }
-      }
+    if (a.href === a.textContent) return;
+    const up = a.parentElement;
+
+    if (a.querySelector('img')) return;
+    a.title = a.title || a.textContent.trim();
+
+    if (setButtonClassName(up)) {
+      const { classList, el } = setButtonClassName(up);
+      a.className = classList;
+      el.classList.add('button-container');
     }
   });
 }
