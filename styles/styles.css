@@ -10,14 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-/* fonts faces */
+/* fallback font for Roboto (normal - 400) */
 @font-face {
   font-family: "Roboto fallback";
-  src: url("../fonts/Roboto-Regular.woff") format("woff");
-  font-style: normal; 
+  size-adjust: 99.4%;
+  src: local("Tahoma");
 }
 
- :root {
+:root {
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
@@ -27,13 +27,13 @@
   --highlight-background-color: #ccc;
   --text-color: #fff;
   --cards-text-color-white: #fff;
-  
+
   /* fonts */
-  --body-font-family: roboto, "Roboto fallback", noto, sans-serif;
+  --body-font-family: roboto, "Roboto", "Roboto fallback", noto, sans-serif;
   --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-  --cards-title-font-family: roboto, "Roboto fallback", noto, sans-serif;
-  --cards-text-font-family: 'Roboto Condensed', sans-serif;
+  --fixed-font-family: 'Roboto Mono', "Roboto fallback", menlo, consolas, 'Liberation Mono', monospace;
+  --cards-title-font-family: "Roboto", "Roboto fallback", noto, sans-serif;
+  --cards-text-font-family: 'Roboto Condensed', "Roboto fallback", sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
