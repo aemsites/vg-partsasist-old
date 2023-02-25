@@ -46,6 +46,12 @@
     font-size: .8rem;
 }
 
+.form-element .required-field {
+    color: #c00;
+    font-size: 10px;
+    font-weight: 700;
+}
+
 .form-element textarea:focus {
     outline: none;
 }
