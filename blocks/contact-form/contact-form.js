@@ -29,15 +29,15 @@ async function submitForm(form, endpoint) {
     body: JSON.stringify({ data: payload }),
   });
   if (resp.ok) {
-    const tform = document.querySelector('#contact');
+    const block = document.querySelector('.contact-form.block');
     const thanksDiv = document.createElement('div');
     const thanks = document.createElement('p');
-    thanks.innerText = 'THANK YOU';
+    thanks.innerText = 'THANK YOU!';
     const thanksCopy = document.createElement('p');
     thanksCopy.innerText = 'Your information has been submitted. Someone will be in touch with you shortly.';
     thanksDiv.append(thanks);
     thanksDiv.append(thanksCopy);
-    tform.replaceWith(thanksDiv);
+    block.replaceWith(thanksDiv);
   }
 }
 

@@ -60,6 +60,10 @@
     outline: none;
 }
 
+[type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
     .form-element.col-left, .form-element.col-right {
         width: 45%;
