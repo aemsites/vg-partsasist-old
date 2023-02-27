@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons, decorateButtons } from '../../scripts/lib-franklin.js';
+import { decorateIcons, decorateButtons, getMetadata } from '../../scripts/lib-franklin.js';
 
 // media query match that indicates mobile/tablet width
 const MQ = window.matchMedia('(min-width: 992px)');
@@ -115,7 +115,9 @@ function setActiveLink(navLinks, hash = window.location.hash) {
     return aHash === hash;
   });
   const link = hash !== '' ? activeLink[0] : navLinks[0];
-  link.classList.add('active');
+  if (link) {
+    link.classList.add('active');
+  }
 }
 
 function removeActiveClass(navLinks) {
@@ -162,11 +164,10 @@ function addActiveClassListener(navLinks) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  const config = readBlockConfig(block);
   block.textContent = '';
 
   // fetch nav content
-  const navPath = config.nav || '/nav';
+  const navPath = getMetadata('nav') || '/nav';
   const resp = await fetch(`${navPath}.plain.html`);
 
   if (!resp.ok) return;
