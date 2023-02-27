@@ -14,20 +14,20 @@
 @font-face {
   font-family: "Roboto fallback";
   src: url("../fonts/Roboto-Regular.woff") format("woff");
-  font-style: normal; 
+  font-style: normal;
 }
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #babbbd;
+  --link-hover-color: #babbbd;
   --background-color: #1b2634;
   --header-background-color: #1c2735;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #fff;
   --cards-text-color-white: #fff;
-  
+
   /* fonts */
   --body-font-family: roboto, "Roboto fallback", noto, sans-serif;
   --heading-font-family: var(--body-font-family);
