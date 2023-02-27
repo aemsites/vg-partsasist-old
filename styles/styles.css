@@ -10,9 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-/* custom font faces needed before the fold */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;900&display=swap');
-
 /* fallback font for Roboto (normal - 400) */
 @font-face {
   font-family: "Roboto fallback";
