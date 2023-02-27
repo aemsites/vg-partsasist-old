@@ -139,7 +139,8 @@
     
     .hero-container::before {
         content: '';
-        background: linear-gradient(180deg,var(--header-background-color) 0%,rgba(28 39 53 0%) 70%);
+        /* stylelint-disable-next-line color-function-notation */
+        background: linear-gradient(180deg, var(--header-background-color) 0%,rgba(28, 39, 53, 0%) 70%);
         position: absolute;
         top: 0;
         left: 0;
@@ -150,7 +151,8 @@
     
     .hero-container::after {
         content: '';
-        background: linear-gradient(0deg,var(--header-background-color) 0%,rgba(28 39 53 0%) 70%);
+        /* stylelint-disable-next-line color-function-notation */
+        background: linear-gradient(0deg, var(--header-background-color) 0%,rgba(28, 39, 53, 0%) 70%);
         position: absolute;
         bottom: 0;
         left: 0;
