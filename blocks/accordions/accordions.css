@@ -93,14 +93,10 @@
   }
 }
 
-.faq-accordions.accordions-container {
-  background-image: url('/media/parallax3.png'), url('/media/parallax4.png');
-  background-repeat: no-repeat;
-  background-position: top left, top right;
-}
-
-@media (max-width: 992px) {
+@media (min-width: 992px) {
   .faq-accordions.accordions-container {
-    background-image: none;
+    background-image: url("/media/parallax3.png"), url("/media/parallax4.png");
+    background-repeat: no-repeat;
+    background-position: top left, top right;
   }
 }
