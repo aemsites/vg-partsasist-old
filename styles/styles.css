@@ -34,6 +34,7 @@
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
   --cards-title-font-family: "Roboto", "Roboto fallback", noto, sans-serif;
   --cards-text-font-family: 'Roboto Condensed', "Roboto", "Roboto fallback", sans-serif;
+  --hero-text-font-family: 'Roboto Condensed', sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
