@@ -129,6 +129,10 @@
     height: 450px;
   }
 
+  .slide:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
   .slide div:first-child {
     position: absolute;
     width: 70%;
@@ -146,10 +150,13 @@
     max-height: 330px;
     overflow: hidden;
   }
+
+  .slide:nth-child(odd) div:last-child {
+    left: 0%;
+  }
 }
 
 @media (min-width: 1200px) {
-
   .carousel {
     max-width: 1140px;
     margin: auto;
