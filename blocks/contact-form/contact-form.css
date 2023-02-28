@@ -48,7 +48,7 @@
     text-transform: uppercase;
     padding: 7px 25px;
     text-align: center;
-    width: 100px;
+    width: auto;
     height: 35px;
     font-size: .8rem;
 }
