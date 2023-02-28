@@ -70,8 +70,6 @@
   font-weight: 500;
 }
 
-/* media queries */
-
 @media (min-width: 576px) {
   .carousel-container {
     height: 780px;
@@ -151,9 +149,6 @@
 }
 
 @media (min-width: 1200px) {
-  /* .carousel-container {
-    min-height: 1200px;
-  } */
 
   .carousel {
     max-width: 1140px;
