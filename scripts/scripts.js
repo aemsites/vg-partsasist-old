@@ -40,6 +40,34 @@ function buildAutoBlocks(main) {
   }
 }
 
+function closeOverlay(banner, overlay) {
+  if (banner.style.length > 0) overlay.style.display = 'none';
+}
+
+function addCloseListener(cookieWrapper) {
+  const closeButton = cookieWrapper.querySelector('#close-pc-btn-handler');
+  const floatingButton = cookieWrapper.querySelector('.ot-floating-button__close');
+  const banner = cookieWrapper.querySelector('#onetrust-banner-sdk');
+  const overlay = cookieWrapper.querySelector('.ot-fade-in');
+  closeButton.onclick = () => closeOverlay(banner, overlay);
+  floatingButton.onclick = () => closeOverlay(banner, overlay);
+}
+
+function waitToCookieLayer() {
+  const observer = new MutationObserver((entries) => {
+    entries.forEach((mutation) => {
+      const { addedNodes } = mutation;
+      if (!addedNodes[0]) return;
+      const { id } = addedNodes[0];
+      if (!id || id !== 'onetrust-consent-sdk') return;
+      addCloseListener(document.getElementById(id));
+      observer.disconnect();
+    });
+  });
+
+  observer.observe(document.body, { childList: true });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -113,6 +141,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+  waitToCookieLayer();
 }
 
 async function loadPage() {
