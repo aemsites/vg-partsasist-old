@@ -1,6 +1,11 @@
 .carousel-container {
   padding: 0 !important;
+  margin-top: 300px;
   width: 100%;
+}
+
+.carousel-wrapper {
+  height: 733px;
 }
 
 .carousel {
@@ -62,6 +67,12 @@
   text-transform: uppercase;
 }
 
+/* .carousel-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
 .carousel-control-prev,
 .carousel-control-next {
   height: 40px;
@@ -83,3 +94,19 @@
 .carousel-control-next {
   right: 2%;
 }
+
+.carousel-control-prev img {
+  height: 30px;
+  width: 30px;
+  padding-top: 8px;
+  padding-left: 3px;
+  
+}
+
+.carousel-control-next img {
+  height: 30px;
+  width: 30px;
+  padding-top: 8px;
+  padding-left: 6px;
+}
+
