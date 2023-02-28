@@ -23,6 +23,7 @@ function createVimeoModals(elm) {
     const videoIframe = document.createElement('iframe');
     videoIframe.setAttribute('width', '560');
     videoIframe.setAttribute('height', '315');
+    videoIframe.setAttribute('loading', 'lazy');
     videoIframe.src = anc.href;
     videoIframe.setAttribute('allowfullscreen', '');
     videoNode.classList.add('modal');
