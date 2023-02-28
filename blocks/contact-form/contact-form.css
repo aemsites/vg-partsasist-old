@@ -1,3 +1,8 @@
+#contact, .row {
+    display: flex;
+    flex-direction: column;
+}
+
 .form-element {
     font-size: var(--body-font-size-xs);
     padding-bottom: 25px;
@@ -7,12 +12,13 @@
 .form-element input[type='text'] {
     outline: 0;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #babbbd;
+    max-width: 100%;
 }
 
 .form-element select {
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #babbbd;
     width: 100%;
     font: inherit;
     color: inherit;
@@ -22,7 +28,7 @@
 .form-element textarea {
     width: 100%;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #babbbd;
     color: inherit;
     background-color: transparent;
     max-height: 360px;
@@ -34,8 +40,9 @@
     padding-bottom: 50px;
 }
 
-.form-element input[type='submit'] {
+.form-element button[type='submit'] {
     background-color: #39748c;
+    color: #fff;
     border-radius: 0;
     border-color: #39748c;
     text-transform: uppercase;
@@ -64,19 +71,18 @@
     cursor: pointer;
 }
 
+.form-element .required::after {
+    content: ' *';
+    color: #c00;
+}
+
 @media (min-width: 768px) {
+    .row {
+        flex-direction: initial;
+        gap: 4rem;
+    }
+
     .form-element.col-left, .form-element.col-right {
-        width: 45%;
+        width: 100%;
     }
-
-    .form-element.col-left {
-        display: inline-block;
-        padding-right: 25px;
-    }
-
-    .form-element.col-right {
-        display: inline-block;
-        padding-left: 35px;
-    }
-
 }
