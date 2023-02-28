@@ -36,6 +36,8 @@
   --cards-text-font-family: 'Roboto Condensed', sans-serif;
 
   /* body sizes */
+  --body-font-size-xl: 28px;
+  --body-font-size-l: 26px;
   --body-font-size-m: 22px;
   --body-font-size-s: 18px;
   --body-font-size-xs: 16px;

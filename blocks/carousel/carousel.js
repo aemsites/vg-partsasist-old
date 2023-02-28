@@ -51,7 +51,7 @@ export default function decorate(block) {
       validSlides.shift();
 
       let newIndex = validSlides.indexOf(activeSlide) + offset;
-      if (newIndex < 0) newIndex = validSlides.children.length - 1;
+      if (newIndex < 0) newIndex = validSlides.length - 1;
       if (newIndex >= validSlides.length) newIndex = 0;
       validSlides[newIndex].dataset.active = true;
       delete activeSlide.dataset.active;
