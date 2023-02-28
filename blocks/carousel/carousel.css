@@ -141,9 +141,9 @@
     position: absolute;
     width: 50%;
     background-color: #39748C;
-    bottom: 0%;
+    top: 16%;
     right: 0%;
-    max-height: 350px;
+    max-height: 330px;
     overflow: hidden;
   }
 }
