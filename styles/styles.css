@@ -14,7 +14,7 @@
 @font-face {
   font-family: "Roboto fallback";
   size-adjust: 99.529%;
-  src: local("Helvetica");
+  src: local("Arial");
 }
 
 :root {
