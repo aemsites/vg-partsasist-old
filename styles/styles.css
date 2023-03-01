@@ -244,13 +244,6 @@ main .section.highlight {
   background-color: var(--highlight-background-color);
 }
 
-main .section.heromain {
-  height: 100vh;
-  background-size: cover;
-  background-image: url('/media_1ad6aab20da76e42ed43f1617ec68fb23b5da9c32.png?width=2000&format=webply&optimize=medium');
-  color: #fff;
-}
-
 .disclosure {
   --heading-font-size-xxl: 55px;
 }
