@@ -54,8 +54,25 @@
 
 }
 
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6*((100vw - 320px)/680));
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 22px;
+  }
+}
+
 body {
   font-size: var(--body-font-size-m);
+  font-weight: 300;
   margin: 0;
   font-family: var(--body-font-family);
   line-height: 1.6;
@@ -71,7 +88,7 @@ body.appear {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
