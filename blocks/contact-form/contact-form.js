@@ -40,9 +40,11 @@ async function submitForm(form, endpoint) {
     const block = document.querySelector('.contact-form.block');
     const thanksDiv = document.createElement('div');
     const thanks = document.createElement('p');
+    thanks.className = 'thanks-title';
     thanks.innerText = 'THANK YOU!';
     const thanksCopy = document.createElement('p');
     thanksCopy.innerText = 'Your information has been submitted. Someone will be in touch with you shortly.';
+    thanksCopy.className = 'thanks-text';
     thanksDiv.append(thanks);
     thanksDiv.append(thanksCopy);
     block.replaceWith(thanksDiv);
