@@ -217,10 +217,10 @@
 
 @media (min-width: 1200px) {
     .hero-container {
-        max-width: 1140px;
+        max-width: 1200px;
     }
 
     .hero {
-        padding: 0 15px;
+        padding: 0;
     }
 }
