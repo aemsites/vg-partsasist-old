@@ -38,10 +38,16 @@
    text-transform: uppercase;
    font-size: var(--heading-font-size-xl);
    line-height: 50px;
-   font-weight: 600;
+   font-weight: 500;
    margin-bottom: 9px;
    margin-top: 0;
    padding-top: 150px;
+}
+
+
+.hero h2 {
+    font-family: var(--hero-text-font-family);
+    font-size: var(--heading-font-size-s);
 }
 
 .hero h1 + h3 {
@@ -61,7 +67,7 @@
 }
 
 .hero div:last-child div {
-    font-size: var(--body-font-size-xs);
+    font-size: var(--body-font-size-m);
     line-height: 25px;
     font-weight: 300;
     margin-bottom: 18px;
@@ -79,10 +85,6 @@
 }
 
 @media (min-width: 575px) {
-    .hero {
-        padding: 0;
-    }
-
     .hero h1 {
         font-size: calc(var(--heading-font-size-xxl) * 1.05);
         line-height: 54px;
@@ -166,11 +168,13 @@
     }
 
     .hero {
-        height: 100vh;
-        margin: 0;
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
         width: 40%;
         padding-left: 30px;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .hero div:first-child div {
@@ -182,9 +186,14 @@
     }
 
     .hero h1 {
-        font-size: calc(var(--heading-font-size-xxl) * 1.2);
-        line-height: 86px;
-        padding-top: 140px;
+        font-size: calc(var(--heading-font-size-xl) * 0.9);
+        line-height: calc(var(--heading-font-size-xl) * 0.9);
+        padding-top: 0;
+    }
+
+    .hero h2 {
+        font-size: calc(var(--heading-font-size-m));
+        line-height: calc(var(--heading-font-size-s) * 1.2);
     }
 
     .hero h1 + h3 {
@@ -208,11 +217,10 @@
 
 @media (min-width: 1200px) {
     .hero-container {
-        max-width: 1140px;
-
+        max-width: 1200px;
     }
 
     .hero {
-        padding: 0 15px;
+        padding: 0;
     }
 }
