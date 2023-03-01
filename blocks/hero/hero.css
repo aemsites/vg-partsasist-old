@@ -168,11 +168,13 @@
     }
 
     .hero {
-        height: 100vh;
-        margin: 0;
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
         width: 40%;
         padding-left: 30px;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .hero div:first-child div {
@@ -186,7 +188,7 @@
     .hero h1 {
         font-size: calc(var(--heading-font-size-xl) * 0.9);
         line-height: calc(var(--heading-font-size-xl) * 0.9);
-        padding-top: 140px;
+        padding-top: 0;
     }
 
     .hero h2 {
