@@ -12,14 +12,14 @@
 
 .section-divider .section-divider-subheader {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   margin-bottom: 16px;
 }
 
 .section-divider p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 300;
 }
 
@@ -29,34 +29,16 @@
 
 @media (min-width: 768px) {
   .section-divider .section-divider-header {
-    font-size: 3.1rem;
     margin-bottom: 10px;
   }
 
   .section-divider .section-divider-subheader {
-    font-size: 1rem;
     margin: 0;
     margin-bottom: 20px;
-  }
-
-  .section-divider p {
-    font-size: 1rem;
   }
 }
 
 @media (min-width: 992px) {
-  .section-divider .section-divider-header {
-    font-size: 3.45rem;
-  }
-
-  .section-divider .section-divider-subheader {
-    font-size: 1.1rem;
-  }
-
-  .section-divider p {
-    font-size: 1.1rem;
-  }
-
   .section-divider {
     width: 50%;
     padding: 97px 0 36px;
