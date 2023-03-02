@@ -14,7 +14,7 @@ import {
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
-window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
+window.hlx.RUM_GENERATION = 'partsasist'; // add your RUM generation information here
 
 function buildHeroBlock(main) {
   /* 1. If there is an explicit hero block, add it to its own section, so it can be full-width */
