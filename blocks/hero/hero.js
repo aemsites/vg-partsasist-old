@@ -1,6 +1,12 @@
 import { readBlockConfig } from '../../scripts/lib-franklin.js';
 
 export default function decorate(block) {
+  const scrollbutton = document.createElement('div');
+  scrollbutton.classList.add('scroll-button');
+  const buttonContent = 'Scroll down';
+  scrollbutton.innerHTML = `<a href="">${buttonContent}</a>`;
+  block.insertAdjacentElement('afterend', scrollbutton);
+
   const config = readBlockConfig(block);
   // setup metadata and remove all of them from the DOM
   if (config && Object.keys(config).length === 1) {
