@@ -1,3 +1,5 @@
+@import url('./scroll-button.css');
+
 .hero-container {
     padding: 0 !important;
     font-family: var(--hero-text-font-family);
