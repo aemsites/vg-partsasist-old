@@ -1,60 +1,81 @@
-const addButtons = (block) => {
-  // icons
-  const iconPrev = document.createElement('img');
-  iconPrev.src = '../../icons/chevron-left.svg';
-  const iconNext = document.createElement('img');
-  iconNext.src = '../../icons/chevron-right.svg';
+function updateSlide(index, carousel) {
+  const item = carousel.children[index];
+  const left = item.offsetLeft + item.offsetWidth / 2
+    - (item.parentNode.offsetLeft + item.parentNode.offsetWidth / 2);
+  carousel.scrollTo({ top: 0, left, behavior: 'smooth' });
+}
 
-  // prev button
-  const prevButton = document.createElement('span');
-  prevButton.append(iconPrev);
-  prevButton.dataset.carouselButton = 'prev';
-  prevButton.classList.add('carousel-control');
-  prevButton.classList.add('carousel-control-prev');
-
-  // next button
-  const nextButton = document.createElement('span');
-  nextButton.append(iconNext);
-  nextButton.dataset.carouselButton = 'next';
-  nextButton.classList.add('carousel-control');
-  nextButton.classList.add('carousel-control-next');
-
-  // add buttons
-  block.prepend(prevButton);
-  block.append(nextButton);
+const setIncrement = (direction, amount, lenght) => {
+  let increment = amount;
+  if (direction === 'next') {
+    increment = (increment === lenght - 1) ? increment = 0 : increment += 1;
+  } else if (direction === 'prev') {
+    increment = (increment === 0) ? increment = lenght - 1 : increment -= 1;
+  }
+  return increment;
 };
 
 export default function decorate(block) {
-  const slides = [...block.children];
+  const carouselChildren = [...block.children];
 
-  slides[0].dataset.active = true;
+  const gridContainer = document.createElement('ul');
+  gridContainer.classList.add('carousel-list');
 
-  slides.forEach((e) => {
-    e.classList.add('slide');
-    e.dataset.type = 'slide';
+  block.appendChild(gridContainer);
+
+  carouselChildren.forEach((e) => {
+    gridContainer.appendChild(e);
+    e.outerHTML = `<li class="item">${e.innerHTML}</li>`;
   });
 
-  addButtons(block);
+  const carouselItems = block.querySelectorAll('ul > li');
 
-  const buttons = document.querySelectorAll('[data-carousel-button]');
+  carouselItems.forEach((li) => {
+    // Add wrapper around the content
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('wrapper');
+    contentContainer.innerHTML = li.innerHTML;
+    li.innerHTML = '';
+    li.append(contentContainer);
+  });
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const offset = button.dataset.carouselButton === 'next' ? 1 : -1;
-      const selectedCarousel = button
-        .closest('.carousel');
+  // create carousel controls
+  const controlsContainer = document.createElement('ul');
+  controlsContainer.classList.add('carousel-controls');
 
-      const activeSlide = selectedCarousel.querySelector('[data-active]');
+  const controlNext = document.createElement('li');
+  controlNext.classList.add('carousel-control-next');
+  const controlPrev = document.createElement('li');
+  controlPrev.classList.add('carousel-control-prev');
 
-      const validSlides = [...selectedCarousel.children];
-      validSlides.pop();
-      validSlides.shift();
+  const iconNext = document.createElement('img');
+  iconNext.src = '../../icons/chevron-left.svg';
+  iconNext.classList.add('prev');
+  const iconPrev = document.createElement('img');
+  iconPrev.src = '../../icons/chevron-right.svg';
+  iconPrev.classList.add('next');
 
-      let newIndex = validSlides.indexOf(activeSlide) + offset;
-      if (newIndex < 0) newIndex = validSlides.length - 1;
-      if (newIndex >= validSlides.length) newIndex = 0;
-      validSlides[newIndex].dataset.active = true;
-      delete activeSlide.dataset.active;
+  controlNext.append(iconNext);
+  controlPrev.append(iconPrev);
+
+  controlsContainer.appendChild(controlNext);
+  controlsContainer.appendChild(controlPrev);
+
+  gridContainer.parentNode.append(controlsContainer);
+
+  const controlItems = block.querySelectorAll('ul.carousel-controls > li');
+
+  let amount = 0;
+
+  controlItems.forEach((controlItem) => {
+    controlItem.addEventListener('click', (e) => {
+      const direction = e.target.classList.value;
+      const carouselParent = e.target.closest('.carousel');
+      const clickedCarousel = carouselParent.querySelector('.carousel-list');
+      const carouselLength = clickedCarousel.children.length;
+
+      amount = setIncrement(direction, amount, carouselLength);
+      updateSlide(amount, clickedCarousel);
     });
   });
 }
