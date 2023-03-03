@@ -4,7 +4,7 @@ export default function decorate(block) {
   const scrollbutton = document.createElement('div');
   scrollbutton.classList.add('scroll-button');
   const buttonContent = 'Scroll down';
-  const buttonTarget = '';
+  const buttonTarget = '#contact';
   scrollbutton.innerHTML = `<a href=${buttonTarget}>${buttonContent}</a>`;
   block.insertAdjacentElement('afterend', scrollbutton);
 
