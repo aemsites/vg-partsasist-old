@@ -5,6 +5,16 @@ function updateSlide(index, carousel) {
   carousel.scrollTo({ top: 0, left, behavior: 'smooth' });
 }
 
+const setIncrement = (direction, amount, lenght) => {
+  let increment = amount;
+  if (direction === 'next') {
+    increment = (increment === lenght - 1) ? increment = 0 : increment += 1;
+  } else if (direction === 'prev') {
+    increment = (increment === 0) ? increment = lenght - 1 : increment -= 1;
+  }
+  return increment;
+};
+
 export default function decorate(block) {
   const carouselChildren = [...block.children];
 
@@ -64,25 +74,7 @@ export default function decorate(block) {
       const clickedCarousel = carouselParent.querySelector('.carousel-list');
       const carouselLength = clickedCarousel.children.length;
 
-      switch (direction) {
-        case ('next'):
-          if (amount === carouselLength - 1) {
-            amount = 0;
-          } else {
-            amount += 1;
-          }
-          break;
-        case ('prev'):
-          if (amount === 0) {
-            amount = carouselLength - 1;
-          } else {
-            amount -= 1;
-          }
-          break;
-        default:
-          amount = 0;
-      }
-
+      amount = setIncrement(direction, amount, carouselLength);
       updateSlide(amount, clickedCarousel);
     });
   });
