@@ -136,6 +136,12 @@
     background-size: cover;
     cursor: pointer;
     transform: translate(-50%,-50%);
+    transition: unset;
+}
+
+.cards.alternating .cards-card-body .play:hover {
+    opacity: .8;
+    animation: unset;
 }
 
 .cards .modal iframe {
@@ -183,7 +189,7 @@
         align-items: center;
         width: 720px;
         margin: auto;
-        
+
     }
 
     .cards.block > ul > li {
