@@ -12,7 +12,6 @@ function playVideo(evt) {
 function createVimeoModals(elm) {
   const anchors = elm.querySelectorAll('a');
   anchors.forEach((anc) => {
-
     // put the play icon over the image preview
     const play = document.createElement('div');
     play.setAttribute('data-toggle', 'modal');
