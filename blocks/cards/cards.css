@@ -97,7 +97,6 @@
 
     /* setting this to relative so the play button below can align with it with position:absolute. */
     position: relative;
-
 }
 
 .cards.alternating li:nth-child(odd) {
@@ -220,15 +219,14 @@
         margin: 0;
     }
 
-    .cards.alternating li:nth-child(odd),
-    .cards.alternating li:nth-child(even) {
+    .cards.alternating li:nth-child(n) {
         flex-direction: column;
         box-shadow: none;
         outline: none;
     }
 
-    .cards.alternating li:nth-child(odd) .cards-card-body,
-    .cards.alternating li:nth-child(even) .cards-card-body {
+    .cards.alternating li:nth-child(n) .cards-card-body,
+    .cards.alternating li:nth-child(n) .cards-card-image {
         padding: 0 0 0 35px;
         width: 100%;
     }
