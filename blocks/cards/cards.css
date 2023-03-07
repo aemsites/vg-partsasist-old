@@ -144,7 +144,7 @@
 }
 
 .cards.alternating .cards-card-body .play:hover {
-    opacity: .8;
+    filter: brightness(1.5);
     animation: unset;
 }
 
