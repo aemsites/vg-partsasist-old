@@ -143,11 +143,11 @@
     padding: 25px 25px 25px 40px;
   }
 
-  .item:nth-child(even) div div:first-child {
+  .item:nth-child(odd) div div:first-child {
     right: 0%;
   }
 
-  .item:nth-child(odd) div div:last-child {
+  .item:nth-child(even) div div:last-child {
     right: 0%;
   }
   
