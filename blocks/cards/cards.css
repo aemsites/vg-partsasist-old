@@ -81,6 +81,7 @@
     height: fit-content;
     background-color: var(--background-color);
     padding-top: 50px;
+    padding-bottom: 0;
     box-shadow: none;
     outline: none;
 }
@@ -123,7 +124,10 @@
 
 .cards.alternating .cards-card-body p {
     font-size: var(--body-font-size-s);
-    margin-bottom: 1rem;
+}
+
+.cards.alternating .cards-card-body img {
+    margin-bottom: 0;
 }
 
 .cards.alternating .cards-card-body .play {
