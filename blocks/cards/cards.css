@@ -73,6 +73,7 @@
     align-items: center;
     background-image: none;
     background-color: var(--background-color);
+    margin-bottom: 50px;
 }
 
 .cards.alternating > ul > li {
@@ -89,7 +90,14 @@
     text-align: left;
     width: 40%;
     margin: auto 0;
+}
+
+.cards.alternating li .cards-card-image {
+    width: 60%;
+
+    /* setting this to relative so the play button below can align with it with position:absolute. */
     position: relative;
+
 }
 
 .cards.alternating li:nth-child(odd) {
@@ -108,14 +116,11 @@
     padding: 0 50px 0 15px;
 }
 
-.cards.alternating .cards-card-image img {
-    aspect-ratio: auto 1600 / 900;
-}
 
 .cards.alternating .cards-card-body h3 {
     text-transform: uppercase;
     font-family: var(--cards-title-font-family);
-    font-size: var(--heading-font-size-s);
+    font-size: var(--heading-font-size-m);
     margin-bottom: 0.8rem;
     font-weight: 500;
     letter-spacing: .4px;
@@ -126,11 +131,7 @@
     font-size: var(--body-font-size-s);
 }
 
-.cards.alternating .cards-card-body img {
-    margin-bottom: 0;
-}
-
-.cards.alternating .cards-card-body .play {
+.cards.alternating .cards-card-image .play {
     position: absolute;
     height: 100px;
     width: 100px;
@@ -143,9 +144,15 @@
     transition: unset;
 }
 
-.cards.alternating .cards-card-body .play:hover {
+.cards.alternating .cards-card-image .play:hover {
     filter: brightness(1.5);
     animation: unset;
+}
+
+
+.cards.alternating .cards-card-image img {
+    aspect-ratio: auto 1600 / 900;
+    margin-bottom: 0;
 }
 
 .cards .modal iframe {

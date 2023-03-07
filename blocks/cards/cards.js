@@ -12,12 +12,14 @@ function playVideo(evt) {
 function createVimeoModals(elm) {
   const anchors = elm.querySelectorAll('a');
   anchors.forEach((anc) => {
+
     // put the play icon over the image preview
     const play = document.createElement('div');
     play.setAttribute('data-toggle', 'modal');
     play.classList.add('play', 'fade');
     anc.parentNode.previousElementSibling.append(play);
     play.addEventListener('click', playVideo);
+
     // create modal div w/vimeo video
     const videoNode = document.createElement('div');
     const videoIframe = document.createElement('iframe');
@@ -40,8 +42,11 @@ export default function decorate(block) {
     const li = document.createElement('li');
     li.innerHTML = row.innerHTML;
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+      if (div.querySelector('picture')) {
+        div.className = 'cards-card-image';
+      } else {
+        div.className = 'cards-card-body';
+      }
     });
     ul.append(li);
   });
