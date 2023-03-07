@@ -63,6 +63,7 @@ footer .footer-nav {
 
 .footer-rcol {
   text-align: center;
+  font-size: var(--body-font-size-xs);
 }
 
 @media (min-width: 992px) {
