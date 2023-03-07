@@ -1,9 +1,8 @@
 .cards-container {
     padding: 0 !important;
-    margin: 0;
     box-sizing: border-box;
     color: var(--cards-text-color-white);
-    margin-top: 100px;
+    margin: 100px 0 0;
 }
 
 .cards.block > ul {
@@ -90,6 +89,7 @@
     text-align: left;
     width: 40%;
     margin: auto 0;
+    position: relative;
 }
 
 .cards.alternating li:nth-child(odd) {
@@ -131,11 +131,11 @@
 }
 
 .cards.alternating .cards-card-body .play {
-    position: relative;
+    position: absolute;
     height: 100px;
     width: 100px;
     left: 50%;
-    top: -190px;
+    top: 50%;
     background-image: url('/media/play.png');
     background-size: cover;
     cursor: pointer;
@@ -252,7 +252,6 @@
 
 @media (max-width: 575px) {
     .cards.block > ul {
-        width: max-content;
         width: 100%;
     }
 
