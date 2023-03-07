@@ -48,10 +48,3 @@ main .section:last-child {
     padding-bottom: 0;
 }
 
-footer {
-    padding-top: 100px;
-    background-image: url("/media/parallax1.png"), url("/media/parallax2.png");
-    background-repeat: no-repeat, no-repeat;
-    background-position:  left 2%, right 44%;
-}
-

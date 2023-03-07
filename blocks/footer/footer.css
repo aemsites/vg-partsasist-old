@@ -1,5 +1,8 @@
 footer {
-  padding: 2rem;
+  background-image: url("/media/parallax1.png"), url("/media/parallax2.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position:  left 2%, right 44%;
+  padding: 100px 2rem 2rem;
   font-size: var(--body-font-size-s);
 }
 
