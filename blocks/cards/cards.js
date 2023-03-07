@@ -2,14 +2,25 @@ import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
 function hideModal(evt) {
   evt.target.classList.remove('show-modal');
+  evt.target.textContent = '';
 }
 
-function playVideo(evt) {
-  const playDiv = evt.target.parentNode.parentNode.querySelector('.modal');
-  playDiv.addEventListener('click', hideModal);
-  playDiv.classList.add('show-modal');
+function playVideo(evt, videourl) {
+  const videoNode = evt.target.parentNode.parentNode.querySelector('.modal');
+  videoNode.addEventListener('click', hideModal);
+
+  // create modal div with video
+  const videoIframe = document.createElement('iframe');
+  videoIframe.setAttribute('width', '560');
+  videoIframe.setAttribute('height', '315');
+  videoIframe.setAttribute('loading', 'lazy');
+  videoIframe.src = videourl;
+  videoIframe.setAttribute('allowfullscreen', '');
+  videoNode.append(videoIframe);
+
+  videoNode.classList.add('show-modal');
 }
-function createVimeoModals(elm) {
+function createVideoModals(elm) {
   const anchors = elm.querySelectorAll('a');
   anchors.forEach((anc) => {
     // put the play icon over the image preview
@@ -17,18 +28,11 @@ function createVimeoModals(elm) {
     play.setAttribute('data-toggle', 'modal');
     play.classList.add('play', 'fade');
     anc.parentNode.previousElementSibling.append(play);
-    play.addEventListener('click', playVideo);
+    play.addEventListener('click', (event) => playVideo(event, anc.href));
 
-    // create modal div w/vimeo video
+    // create modal (iframe is populated later)
     const videoNode = document.createElement('div');
-    const videoIframe = document.createElement('iframe');
-    videoIframe.setAttribute('width', '560');
-    videoIframe.setAttribute('height', '315');
-    videoIframe.setAttribute('loading', 'lazy');
-    videoIframe.src = anc.href;
-    videoIframe.setAttribute('allowfullscreen', '');
     videoNode.classList.add('modal');
-    videoNode.append(videoIframe);
     anc.parentNode.parentNode.append(videoNode);
     anc.parentNode.remove();
   });
@@ -54,6 +58,6 @@ export default function decorate(block) {
       .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
   block.textContent = '';
-  createVimeoModals(ul);
+  createVideoModals(ul);
   block.append(ul);
 }
