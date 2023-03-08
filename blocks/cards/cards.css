@@ -141,7 +141,8 @@
     width: 100px;
     left: 50%;
     top: 50%;
-    background-image: url('/media/play.png');
+    background-image: url('/media/play-bright.png');
+    opacity: 0.4;
     background-size: cover;
     cursor: pointer;
     transform: translate(-50%,-50%);
@@ -150,10 +151,9 @@
 
 .cards.alternating .cards-card-image .play:hover,
 .cards.alternating .cards-card-image a.video:hover + .play {
-    filter: brightness(1.5);
     animation: unset;
+    opacity: 0.8;
 }
-
 
 .cards.alternating .cards-card-image img {
     aspect-ratio: auto 1600 / 900;
