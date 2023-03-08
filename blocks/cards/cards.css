@@ -148,7 +148,8 @@
     transition: unset;
 }
 
-.cards.alternating .cards-card-image .play:hover {
+.cards.alternating .cards-card-image .play:hover,
+.cards.alternating .cards-card-image a.video:hover + .play {
     filter: brightness(1.5);
     animation: unset;
 }
