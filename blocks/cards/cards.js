@@ -1,27 +1,24 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
-function hideModal(evt) {
-  evt.target.classList.remove('show-modal');
-  evt.target.textContent = '';
+function hideModal(modalDiv) {
+  modalDiv.remove('show-modal');
+  // remove iframe to make sure the playback stops
+  modalDiv.textContent = '';
 }
 
-function playVideo(evt) {
+function playVideo(evt, videoLink, modalDiv) {
   evt.preventDefault();
 
-  const card = evt.target.closest('.cards-card-image');
-  const modalDiv = card.querySelector('.modal');
-  const videoLink = card.querySelector('a.video');
-  modalDiv.addEventListener('click', hideModal);
-
-  // create modal div with video
+  // add video to modal div
   const videoIframe = document.createElement('iframe');
   videoIframe.setAttribute('width', '560');
   videoIframe.setAttribute('height', '315');
   videoIframe.setAttribute('loading', 'lazy');
   videoIframe.src = videoLink.href;
   videoIframe.setAttribute('allowfullscreen', '');
-  modalDiv.append(videoIframe);
 
+  modalDiv.addEventListener('click', () => hideModal(modalDiv));
+  modalDiv.append(videoIframe);
   modalDiv.classList.add('show-modal');
 }
 
@@ -49,12 +46,12 @@ function createVideoModals(cardList) {
     videoLink.parentNode.append(playIcon);
 
     // create modal
-    const videoNode = document.createElement('div');
-    videoNode.classList.add('modal');
-    videoLink.parentNode.append(videoNode);
+    const videoModal = document.createElement('div');
+    videoModal.classList.add('modal');
+    videoLink.parentNode.append(videoModal);
 
-    playIcon.onclick = (event) => playVideo(event);
-    videoLink.onclick = (event) => playVideo(event);
+    playIcon.onclick = (event) => playVideo(event, videoLink, videoModal);
+    videoLink.onclick = (event) => playVideo(event, videoLink, videoModal);
   });
 }
 
