@@ -15,7 +15,7 @@
 .accordions .accordion-button {
   background: none;
   color: white;
-  font-size: var(--body-font-size-s);
+  font-size: 0.8rem;
   font-weight: 400;
   padding: 8px 0;
   margin: 0 25px;
@@ -61,8 +61,8 @@
 .accordions .accordion-panel {
   padding: 27px 27px 27px 90px;
   margin: 0;
+  font-family: var(--cards-text-font-family);
   font-size: var(--body-font-size-s);
-  font-weight: 400;
 }
 
 .accordions .accordion-panel-hidden {

@@ -5,34 +5,35 @@
 
 .section-divider .section-divider-header {
   margin: 0;
-  font-size: var(--heading-font-size-xl);
+  font-size: 2.5rem;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
 .section-divider .section-divider-subheader {
   margin: 0;
-  font-size: var(--body-font-size-s);
+  font-size: 0.8rem;
+  font-weight: 500;
   margin-bottom: 16px;
 }
 
 .section-divider p {
   margin: 0;
-  font-size: var(--heading-font-size-xs);
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .section-divider .section-divider-background {
   margin: 0 -16px;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .section-divider .section-divider-header {
-    font-size: var(--heading-font-size-xxl);
     margin-bottom: 10px;
   }
 
   .section-divider .section-divider-subheader {
     margin: 0;
-    font-size: var(--body-font-size-m);
     margin-bottom: 20px;
   }
 }
@@ -53,13 +54,13 @@
 
 /* backgrounds variants */
 .section-divider-container.faq-background {
-  background-image: url("/media/faq_heading.jpeg");
+  background-image: url("/media/faq_heading.webp");
 }
 
 .section-divider-container.resource-background {
-  background-image: url("/media/resources_heading.jpeg");
+  background-image: url("/media/resources_heading.webp");
 }
 
 .section-divider-container.support-background {
-  background-image: url("/media/support_heading.jpeg");
+  background-image: url("/media/support_heading.webp");
 }

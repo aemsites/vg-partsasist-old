@@ -231,6 +231,7 @@ header nav .nav-sections ul a {
   header nav {
     display: flex;
     justify-content: space-between;
+    max-width: 992px;
   }
 
   header nav[aria-expanded=true] {
@@ -344,5 +345,12 @@ header nav .nav-sections ul a {
     font-weight: 500;
     border-radius: unset;
     margin-block-end: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  header nav {
+    max-width: 1200px;
+    padding: 0;
   }
 }

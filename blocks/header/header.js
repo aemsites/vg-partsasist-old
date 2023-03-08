@@ -148,6 +148,24 @@ function addScrollListener(block) {
   };
 }
 
+function reRenderLoginBtn(loginBtn) {
+  const btnContainer = loginBtn.children[0];
+  const button = btnContainer.children[0];
+  const btnContainerClass = 'button-container';
+  window.onresize = () => {
+    const isDecorated = btnContainer.classList.contains(btnContainerClass);
+    if (MQ.matches && !isDecorated) {
+      btnContainer.className = btnContainerClass;
+      button.setAttribute('title', 'LOGIN');
+      button.className = 'button';
+    } else if (!MQ.matches && isDecorated) {
+      btnContainer.removeAttribute('class');
+      button.removeAttribute('title');
+      button.removeAttribute('class');
+    }
+  };
+}
+
 function addActiveClassListener(navLinks) {
   const navUl = navLinks[0].parentElement;
   const loginBtn = navUl.querySelector('.button');
@@ -195,6 +213,7 @@ export default async function decorate(block) {
       addScrollListener(block);
     }
     [...navLis].at(-1).querySelector('a').target = '_blank';
+    reRenderLoginBtn([...navLis].at(-1));
     cleanAnchorNavTags(navLinks);
     addSectionsId(sections); // for anchor tag navigation
     setActiveLink(navLinks);

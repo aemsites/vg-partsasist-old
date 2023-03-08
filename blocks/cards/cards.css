@@ -1,8 +1,8 @@
 .cards-container {
     padding: 0 !important;
-    margin: 0;
     box-sizing: border-box;
     color: var(--cards-text-color-white);
+    margin: 100px 0 0;
 }
 
 .cards.block > ul {
@@ -60,11 +60,16 @@
 }
 
 .cards.block p {
-    font-size: 1.3rem;
+    font-size: var(--body-font-size-s);
     margin: 0;
     font-family: var(--cards-text-font-family);
     font-weight: 300;
     line-height: 1.3;
+}
+
+.cards a.video {
+    all: unset;
+    cursor: pointer;
 }
 
 .cards.alternating > ul {
@@ -73,6 +78,7 @@
     align-items: center;
     background-image: none;
     background-color: var(--background-color);
+    margin-bottom: 50px;
 }
 
 .cards.alternating > ul > li {
@@ -80,6 +86,7 @@
     height: fit-content;
     background-color: var(--background-color);
     padding-top: 50px;
+    padding-bottom: 0;
     box-shadow: none;
     outline: none;
 }
@@ -88,6 +95,13 @@
     text-align: left;
     width: 40%;
     margin: auto 0;
+}
+
+.cards.alternating li .cards-card-image {
+    width: 60%;
+
+    /* setting this to relative so the play button below can align with it with position:absolute. */
+    position: relative;
 }
 
 .cards.alternating li:nth-child(odd) {
@@ -106,14 +120,11 @@
     padding: 0 50px 0 15px;
 }
 
-.cards.alternating .cards-card-image img {
-    aspect-ratio: auto 1600 / 900;
-}
 
 .cards.alternating .cards-card-body h3 {
     text-transform: uppercase;
     font-family: var(--cards-title-font-family);
-    font-size: var(--heading-font-size-s);
+    font-size: var(--heading-font-size-m);
     margin-bottom: 0.8rem;
     font-weight: 500;
     letter-spacing: .4px;
@@ -122,23 +133,80 @@
 
 .cards.alternating .cards-card-body p {
     font-size: var(--body-font-size-s);
-    margin-bottom: 1rem;
+}
+
+.cards.alternating .cards-card-image .play {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 50%;
+    top: 50%;
+    background-image: url('/media/play-bright.png');
+    opacity: 0.4;
+    background-size: cover;
+    cursor: pointer;
+    transform: translate(-50%,-50%);
+    transition: unset;
+}
+
+.cards.alternating .cards-card-image .play:hover,
+.cards.alternating .cards-card-image a.video:hover + .play {
+    animation: unset;
+    opacity: 0.8;
+}
+
+.cards.alternating .cards-card-image img {
+    aspect-ratio: auto 1600 / 900;
+    margin-bottom: 0;
+}
+
+.cards .modal iframe {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    outline: 0;
+    max-width: 100%;
+}
+
+.cards .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+
+.cards .show-modal {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    background-color: rgb(0 0 0 / 60%);
+}
+
+.cards .fade {
+    transition: opacity .15s linear;
 }
 
 /* Media queries */
-
 @media (max-width: 1200px) {
     .cards.block > ul {
-        width: 80%;
+        width: 90%;
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .cards.block > ul {
         flex-direction: column;
         align-items: center;
-        width: 80%;
+        width: 720px;
         margin: auto;
+
     }
 
     .cards.block > ul > li {
@@ -146,11 +214,11 @@
         justify-content: center;
         box-shadow: inset 0 0 0 10px var(--background-color);
         outline: 1px solid #1b2634;
-        padding: 1.5rem 0.4rem;
+        padding: 1.5rem 0;
     }
 
     .cards.block .cards-card-body p {
-        font-size: 1.2rem;
+        font-size: var(--body-font-size-m);
     }
 
     .cards.block .cards-card-body {
@@ -158,16 +226,14 @@
         margin: 0;
     }
 
-    /* .cards.alternating li, */
-    .cards.alternating li:nth-child(odd),
-    .cards.alternating li:nth-child(even) {
+    .cards.alternating li:nth-child(n) {
         flex-direction: column;
         box-shadow: none;
         outline: none;
     }
 
-    .cards.alternating li:nth-child(odd) .cards-card-body,
-    .cards.alternating li:nth-child(even) .cards-card-body {
+    .cards.alternating li:nth-child(n) .cards-card-body,
+    .cards.alternating li:nth-child(n) .cards-card-image {
         padding: 0 0 0 35px;
         width: 100%;
     }
@@ -177,9 +243,9 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .cards.block > ul {
-        width: 100%;
+        width: 540px;
     }
 
     .cards.block > ul > li {
@@ -194,4 +260,11 @@
     .cards.alternating > ul {
         width: 80%;
     }
+}
+
+@media (max-width: 575px) {
+    .cards.block > ul {
+        width: 100%;
+    }
+
 }
