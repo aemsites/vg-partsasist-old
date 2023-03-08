@@ -43,18 +43,18 @@ function createVideoModals(cardList) {
     parent.append(videoLink);
 
     // put the play icon over the image preview
-    const play = document.createElement('div');
-    play.setAttribute('data-toggle', 'modal');
-    play.classList.add('play', 'fade');
-    videoLink.parentNode.append(play);
+    const playIcon = document.createElement('div');
+    playIcon.setAttribute('data-toggle', 'modal');
+    playIcon.classList.add('play', 'fade');
+    videoLink.parentNode.append(playIcon);
 
-    // create modal (iframe is populated later)
+    // create modal
     const videoNode = document.createElement('div');
     videoNode.classList.add('modal');
     videoLink.parentNode.append(videoNode);
 
-    play.addEventListener('click', (event) => playVideo(event, videoLink.href));
-    videoLink.addEventListener('click', (event) => playVideo(event));
+    playIcon.onclick = (event) => playVideo(event);
+    videoLink.onclick = (event) => playVideo(event);
   });
 }
 
