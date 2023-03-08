@@ -61,7 +61,7 @@
 }
 
 .cards.block p {
-    font-size: 1.3rem;
+    font-size: var(--body-font-size-s);
     margin: 0;
     font-family: var(--cards-text-font-family);
     font-weight: 300;
@@ -183,7 +183,7 @@
         align-items: center;
         width: 720px;
         margin: auto;
-        
+
     }
 
     .cards.block > ul > li {
@@ -195,7 +195,7 @@
     }
 
     .cards.block .cards-card-body p {
-        font-size: 1.2rem;
+        font-size: var(--body-font-size-m);
     }
 
     .cards.block .cards-card-body {
