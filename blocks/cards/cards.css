@@ -166,6 +166,7 @@
     position: absolute;
     transform: translate(-50%,-50%);
     outline: 0;
+    max-width: 100%;
 }
 
 .cards .modal {
