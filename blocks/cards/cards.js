@@ -5,36 +5,56 @@ function hideModal(evt) {
   evt.target.textContent = '';
 }
 
-function playVideo(evt, videourl) {
-  const videoNode = evt.target.parentNode.parentNode.querySelector('.modal');
-  videoNode.addEventListener('click', hideModal);
+function playVideo(evt) {
+  evt.preventDefault();
+
+  const card = evt.target.closest('.cards-card-image');
+  const modalDiv = card.querySelector('.modal');
+  const videoLink = card.querySelector('a.video');
+  modalDiv.addEventListener('click', hideModal);
 
   // create modal div with video
   const videoIframe = document.createElement('iframe');
   videoIframe.setAttribute('width', '560');
   videoIframe.setAttribute('height', '315');
   videoIframe.setAttribute('loading', 'lazy');
-  videoIframe.src = videourl;
+  videoIframe.src = videoLink.href;
   videoIframe.setAttribute('allowfullscreen', '');
-  videoNode.append(videoIframe);
+  modalDiv.append(videoIframe);
 
-  videoNode.classList.add('show-modal');
+  modalDiv.classList.add('show-modal');
 }
-function createVideoModals(elm) {
-  const anchors = elm.querySelectorAll('a');
-  anchors.forEach((anc) => {
+
+function createVideoModals(cardList) {
+  const videoAnchors = cardList.querySelectorAll('a');
+
+  videoAnchors.forEach((videoLink) => {
+    const picture = videoLink.closest('.cards-card-image').querySelector('picture');
+    const parent = picture.parentNode;
+
+    // the parent of the video link (<p>) is not needed any more
+    videoLink.parentNode.remove();
+
+    // wrap picture in link
+    videoLink.textContent = '';
+    videoLink.classList.add('video');
+    videoLink.title = 'play video';
+    videoLink.append(picture);
+    parent.append(videoLink);
+
     // put the play icon over the image preview
     const play = document.createElement('div');
     play.setAttribute('data-toggle', 'modal');
     play.classList.add('play', 'fade');
-    anc.parentNode.previousElementSibling.append(play);
-    play.addEventListener('click', (event) => playVideo(event, anc.href));
+    videoLink.parentNode.append(play);
 
     // create modal (iframe is populated later)
     const videoNode = document.createElement('div');
     videoNode.classList.add('modal');
-    anc.parentNode.parentNode.append(videoNode);
-    anc.parentNode.remove();
+    videoLink.parentNode.append(videoNode);
+
+    play.addEventListener('click', (event) => playVideo(event, videoLink.href));
+    videoLink.addEventListener('click', (event) => playVideo(event));
   });
 }
 
