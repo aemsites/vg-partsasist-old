@@ -44,7 +44,8 @@
 }
 
 main .section:last-child {
-    /* reduce padding in main section and give more space to the footer background image */
+    /* reduce padding of the last section in main. Instead we increase the padding-top in the footer
+     and show more of background image. */
     padding-bottom: 0;
 }
 
