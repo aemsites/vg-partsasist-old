@@ -12,7 +12,7 @@
 
 .section-divider .section-divider-subheader {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 16px;
 }
@@ -35,13 +35,14 @@
   .section-divider .section-divider-subheader {
     margin: 0;
     margin-bottom: 20px;
+    max-width: 345px;
   }
 }
 
 @media (min-width: 992px) {
   .section-divider {
-    width: 50%;
-    padding: 97px 0 36px;
+    width: calc(50% - 30px);
+    padding: 97px 30px  36px 0;
   }
 }
 
