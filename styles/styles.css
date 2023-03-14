@@ -133,8 +133,8 @@ pre {
 }
 
 /* buttons */
-
-a.button:any-link, button {
+:is(header, main, footer) a.button:any-link,
+:is(header, main, footer) button {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
