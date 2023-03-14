@@ -16,7 +16,7 @@ html {
 /* header and nav layout */
 header {
   position: sticky;
-  z-index: 1;
+  z-index: 10;
 }
 
 header .header {
@@ -214,6 +214,11 @@ header nav .nav-sections ul a {
   font-weight: 100;
 }
 
+/* there is an empty div in the dom, which has to be ignored. */
+header nav > div:not([class]):last-child {
+  display: none;
+}
+
 @media (min-width: 600px) {
   /* header and nav layout */
   header nav {
@@ -350,7 +355,7 @@ header nav .nav-sections ul a {
 
 @media (min-width: 1200px) {
   header nav {
-    max-width: 1200px;
+    max-width: 1140px;
     padding: 0;
   }
 }
