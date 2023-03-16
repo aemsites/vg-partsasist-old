@@ -59,7 +59,7 @@ async function validateForm(event, endpoint, form) {
     'email-address': { required: true, emailPattern: true },
     'paragraph-text': { required: true, type: 'textarea' },
   };
-  const emailRegex = /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm;
+  const emailRegex = /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+[.][A-Za-z0-9.-]+$/gm;
   event.preventDefault();
 
   Object.keys(configForm).forEach((fieldName) => {
