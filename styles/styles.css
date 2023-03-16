@@ -132,6 +132,12 @@ pre {
   overflow: scroll;
 }
 
+
+a.button:hover, a.button:focus {
+  background-color: var(--link-hover-color);
+  cursor: pointer;
+}
+
 /* buttons */
 :is(header, main, footer) a.button:any-link,
 :is(header, main, footer) button {
@@ -154,10 +160,12 @@ pre {
   border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
+ button:hover, button:focus  {
   background-color: var(--link-hover-color);
   cursor: pointer;
 }
+
+
 
 button:disabled, button:disabled:hover {
   background-color: var(--overlay-background-color);
