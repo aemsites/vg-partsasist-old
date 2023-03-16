@@ -23,7 +23,10 @@
   height: 40px;
   width: 40px;
   position: absolute;
-  top: 48%;
+
+  /* offset from top is the height of the image. The image is of aspect ratio 1021 / 682. Remove halve of the
+     button height to center vertically. */
+  top: calc(100vw / 1021 * 682 - 40px/2);
   z-index: 2;
   background: none;
   cursor: pointer;
@@ -48,7 +51,7 @@
 
 .carousel-control-prev img {
   padding-left: 3px;
-  
+
 }
 
 .carousel-control-next img {
@@ -90,7 +93,7 @@
     padding-top: 8px;
     height: 40px;
     width: 40px;
-  } 
+  }
 
 }
 
