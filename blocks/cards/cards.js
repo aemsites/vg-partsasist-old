@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
 function hideModal(modalDiv) {
-  modalDiv.remove('show-modal');
+  modalDiv.classList.remove('show-modal');
   // remove iframe to make sure the playback stops
   modalDiv.textContent = '';
 }
