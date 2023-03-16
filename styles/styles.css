@@ -132,9 +132,15 @@ pre {
   overflow: scroll;
 }
 
-/* buttons */
 
-a.button:any-link, button {
+a.button:hover, a.button:focus {
+  background-color: var(--link-hover-color);
+  cursor: pointer;
+}
+
+/* buttons */
+:is(header, main, footer) a.button:any-link,
+:is(header, main, footer) button {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
@@ -154,10 +160,12 @@ a.button:any-link, button {
   border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
+ button:hover, button:focus  {
   background-color: var(--link-hover-color);
   cursor: pointer;
 }
+
+
 
 button:disabled, button:disabled:hover {
   background-color: var(--overlay-background-color);
