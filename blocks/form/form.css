@@ -1,0 +1,86 @@
+main .form-container {
+    background-color: var(--background-color);
+}
+
+main .form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+main .form-container .field-wrapper {
+    padding-bottom: 25px;
+}
+
+main .form-container input,
+main .form-container textarea,
+main .form-container select  {
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0.75rem 0.6rem;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font: inherit;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid #babbbd;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+main .form-container textarea {
+    max-height: 360px;
+    min-height: 48px;
+}
+
+main .form-container label {
+    font-size: var(--body-font-size-s);
+}
+
+main .form-container button[type='submit'] {
+    background-color: #39748c;
+    color: #fff;
+    border-radius: 0;
+    border-color: #39748c;
+    text-transform: uppercase;
+    padding: 7px 25px;
+    text-align: center;
+    width: auto;
+    height: 35px;
+    font-size: .8rem;
+}
+
+main .form-container .field-wrapper[data-required] label::after {
+    content: ' *';
+    color: #c00;
+}
+
+/** handling of field specific styles */
+main .form-container .form-paragraph-text,
+main .form-container .form-dealer-customer {
+    padding-bottom: 50px;
+}
+
+
+@media (min-width: 768px) {
+    main .form-container form {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    main .form-container .field-wrapper {
+        width: 100%;
+    }
+
+    /* stylelint-disable selector-class-pattern */
+    main .form-container .form-firstName {
+        margin-right: 4rem;
+    }
+
+    main .form-container .form-firstName,
+    main .form-container .form-lastName {
+        width: calc(50% - 2rem)
+    }
+    /* stylelint-enable selector-class-pattern */
+}
