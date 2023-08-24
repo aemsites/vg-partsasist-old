@@ -292,6 +292,40 @@ async function fetchForm(pathname) {
   return jsonData;
 }
 
+function showError(evnt) {
+  const field = evnt.target;
+  const fieldWrapper = field.parentNode;
+  fieldWrapper.classList.add('invalid');
+  let errorSpan = fieldWrapper.querySelector('span.error');
+  if (!errorSpan) {
+    errorSpan = document.createElement('span');
+    errorSpan.classList.add('error');
+    fieldWrapper.append(errorSpan);
+  }
+  errorSpan.innerText = field.validationMessage;
+  // eslint-disable-next-line no-use-before-define
+  field.addEventListener('blur', hideError);
+}
+
+function hideError(evnt) {
+  const field = evnt.target;
+  const fieldWrapper = field.parentNode;
+  // to avoid showing error messages on blur
+  if (field.checkValidity()) {
+    fieldWrapper.classList.remove('invalid');
+  } else {
+    fieldWrapper.classList.add('invalid');
+  }
+}
+
+function decorateValidation(form) {
+  form.setAttribute('novalidate', '');
+  form.querySelectorAll('input,textarea,select').forEach((el) => {
+    el.addEventListener('invalid', showError);
+  });
+}
+
+
 async function createForm(formURL) {
   const { pathname } = new URL(formURL);
   const data = await fetchForm(pathname);
@@ -316,10 +350,17 @@ async function createForm(formURL) {
   // eslint-disable-next-line prefer-destructuring
   form.dataset.action = pathname.split('.json')[0];
   form.addEventListener('submit', (e) => {
+    let isValid = true;
+    if (form.hasAttribute('novalidate')) {
+      isValid = form.checkValidity();
+    }
     e.preventDefault();
-    e.submitter.setAttribute('disabled', '');
-    handleSubmit(form);
+    if (isValid) {
+      e.submitter.setAttribute('disabled', '');
+      handleSubmit(form);
+    }
   });
+  decorateValidation(form);
   return form;
 }
 
