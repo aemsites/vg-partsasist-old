@@ -4,6 +4,8 @@ const thankyouMessage = `<p class='thanks-title'>Thank you</p>
 <p class='thanks-text'>Your information has been submitted. Someone will be in touch with you shortly.</p>
 `;
 
+const SUBMIT_ACTION = 'http://151.101.134.122:443/customers/partsasist/contact-form';
+
 function generateUnique() {
   return new Date().valueOf() + Math.random();
 }
@@ -354,7 +356,7 @@ async function createForm(formURL) {
   });
   groupFieldsByFieldSet(form);
   // eslint-disable-next-line prefer-destructuring
-  form.dataset.action = pathname.split('.json')[0];
+  form.dataset.action = SUBMIT_ACTION;
   form.addEventListener('submit', (e) => {
     let isValid = true;
     if (form.hasAttribute('novalidate')) {
