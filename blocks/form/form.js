@@ -4,7 +4,11 @@ const thankyouMessage = `<p class='thanks-title'>Thank you</p>
 <p class='thanks-text'>Your information has been submitted. Someone will be in touch with you shortly.</p>
 `;
 
-const SUBMIT_ACTION = 'http://151.101.134.122:443/customers/partsasist/contact-form';
+// Form Block identifies the submit endpoint via these rules and in order
+// 1. action property on the submit button
+// 2. SUBMIT_ACTION constant
+// 3. the path of the spreadsheet
+const SUBMIT_ACTION = '';
 
 function generateUnique() {
   return new Date().valueOf() + Math.random();
@@ -139,6 +143,9 @@ function createButton(fd) {
   const button = document.createElement('button');
   button.textContent = fd.Label;
   button.type = fd.Type;
+  if (button.type === 'submit' && fd.Action) {
+    button.formAction = fd.Action;
+  }
   button.classList.add('button');
   button.dataset.redirect = fd.Extra || '';
   button.id = fd.Id;
@@ -356,7 +363,6 @@ async function createForm(formURL) {
   });
   groupFieldsByFieldSet(form);
   // eslint-disable-next-line prefer-destructuring
-  form.dataset.action = SUBMIT_ACTION;
   form.addEventListener('submit', (e) => {
     let isValid = true;
     if (form.hasAttribute('novalidate')) {
@@ -365,6 +371,7 @@ async function createForm(formURL) {
     e.preventDefault();
     if (isValid) {
       e.submitter.setAttribute('disabled', '');
+      form.dataset.action = e.submitter.formAction || SUBMIT_ACTION || pathname.split('.json')[0];
       handleSubmit(form);
     }
   });
