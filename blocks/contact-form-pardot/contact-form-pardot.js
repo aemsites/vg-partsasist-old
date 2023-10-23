@@ -52,10 +52,10 @@ function serialize(obj){
     return str.join('&');
 }
 
-formSuccess = function() {
+function formSuccess() {
     alert("Thank you for your subscription")        
 }
-formError = function() {
+function formError() {
     alert("An error ocurred");      
 }       
 
