@@ -19,7 +19,9 @@ async function makePardotFormCall(event, endpoint, form) {
         }
     });
     debugger;
-    dataURI['callback'] = 'logResult';
+    dataURI['success_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
+    dataURI['error_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
+    
     var serializedData = serialize(dataURI);
 
     // Create the script element dynamically through JavaScript 
