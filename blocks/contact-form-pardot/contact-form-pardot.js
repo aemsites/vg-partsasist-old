@@ -54,12 +54,13 @@ function serialize(obj){
 }
 
 function formSuccess() {
+    debugger;
     alert("Thank you for your subscription")        
 }
 function formError() {
+    debugger;
     alert("ERROR: There's an error in your submission");  
-    console.log("ERROR in the form submission");
-    window.location.reload;   
+    console.log("ERROR in the form submission");  
 }       
 
 /**
