@@ -57,7 +57,9 @@ function formSuccess() {
     alert("Thank you for your subscription")        
 }
 function formError() {
-    alert("An error ocurred");      
+    alert("ERROR: There's an error in your submission");  
+    console.log("ERROR in the form submission");
+    window.location.reload;   
 }       
 
 /**
