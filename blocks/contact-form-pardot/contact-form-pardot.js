@@ -70,7 +70,7 @@ export default async function decorate(block) {
     //const config = readBlockConfig(block);
     const config =  "https://go.roadchoice.com/l/999771/2023-09-14/qcrx";
     block.innerHTML = `
-    <form id="contact-form-pardot" method="post">
+    <form id="contact-form-pardot" method="get">
       <div class="row">
         <div class="form-element col-left">
           <div class="required">First Name</div>
@@ -109,5 +109,5 @@ export default async function decorate(block) {
     </form>
     `;
     const form = block.querySelector('#contact-form-pardot');
-    form.addEventListener('submit', (event) => makePardotFormCall(event, config.endpoint, form));
+    form.addEventListener('submit', (event) => makePardotFormCall(event, config, form));
 }
