@@ -19,6 +19,7 @@ async function makePardotFormCall(event, endpoint, form) {
         }
     });
     debugger;
+    dataURI['callback'] = 'logResult';
     var serializedData = serialize(dataURI);
 
     // Create the script element dynamically through JavaScript 
