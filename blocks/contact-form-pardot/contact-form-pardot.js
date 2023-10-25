@@ -19,9 +19,10 @@ async function makePardotFormCall(event, endpoint, form) {
         }
     });
     debugger;
-    dataURI['success_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
-    dataURI['error_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
+    //dataURI['success_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
+    //dataURI['error_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
     
+    dataURI['callback'] = 'logResult';
     var serializedData = serialize(dataURI);
 
     // Create the script element dynamically through JavaScript 
@@ -43,6 +44,39 @@ async function makePardotFormCall(event, endpoint, form) {
     }         
     // prevent default  action
     return false;
+
+}
+
+async function makePardotFormCall2(event, endpoint, form) {
+        
+    var url =    "https://go.roadchoice.com/l/999771/2023-09-14/qcrx"; //form.attr("action");
+    const formData = new FormData();
+  
+    form.querySelectorAll("input, textarea, select").forEach(function(element) {
+        var inputType = element.tagName.toUpperCase() === "INPUT" && element.type.toUpperCase();
+        if (inputType !== "BUTTON" && inputType !== "SUBMIT") {
+            formData.append(element.name, element.value);
+        }
+    });
+    debugger;
+
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => {
+            if (!response.ok){
+                throw new Error(`HTTP Error! Status: ${response.status}`)
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log('Forms submission OK');
+        })
+        .catch(error => {
+            console.log('Error: Forms submission NOK');
+        });
+
 }
 
 function serialize(obj){
@@ -112,5 +146,5 @@ export default async function decorate(block) {
     </form>
     `;
     const form = block.querySelector('#pardot-form');
-    form.addEventListener('submit', (event) => makePardotFormCall(event, config, form));
+    form.addEventListener('submit', (event) => makePardotFormCall2(event, config, form));
 }
