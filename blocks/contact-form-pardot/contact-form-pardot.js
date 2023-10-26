@@ -96,7 +96,19 @@ function formSuccess() {
 function formError() {
     debugger;
     alert("ERROR: There's an error in your submission");  
-    console.log("ERROR in the form submission");  
+    console.log("ERROR in the form submission");
+    const form = block.getElementById('pardot-form');
+
+    const error = document.createElement("span");
+    // Give it an id attribute called 'newSpan'
+    error.id = "errorSpan";
+    // Create some content for the new element.
+    const error_content = document.createTextNode("Error submitting the form");
+    // Apply that content to the new element
+    error.appendChild(error_content);
+    const parentDiv = form.parentNode;
+    // Replace existing node sp2 with the new span element sp1
+    parentDiv.replaceChild(error, form);
 }       
 
 /**
