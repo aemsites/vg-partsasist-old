@@ -146,5 +146,6 @@ export default async function decorate(block) {
     </form>
     `;
     const form = block.querySelector('#pardot-form');
-    form.addEventListener('submit', (event) => makePardotFormCall2(event, config, form));
+    //form.addEventListener('submit', (event) => makePardotFormCall(event, config, form));
 }
+makePardotFormCall('',config, form);
