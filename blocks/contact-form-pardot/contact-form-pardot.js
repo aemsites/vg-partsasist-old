@@ -141,11 +141,12 @@ export default async function decorate(block) {
         <div><textarea name="paragraph-text"></textarea></div>
       </div>
       <div class="form-element">
-        <div><button type="submit"/>Submit</button></div>
+        <div><button id="submit-form" type="button"/>Submit</button></div>
       </div>
     </form>
     `;
     const form = block.querySelector('#pardot-form');
     //form.addEventListener('submit', (event) => makePardotFormCall(event, config, form));
+    const submitBtn = block.querySelector('#submit-form');
+    submitBtn.addEventListener('click', (event) => makePardotFormCall(event, config, form));
 }
-makePardotFormCall('',config, form);
