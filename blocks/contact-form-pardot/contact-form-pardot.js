@@ -47,38 +47,6 @@ async function makePardotFormCall(event, endpoint, form) {
 
 }
 
-async function makePardotFormCall2(event, endpoint, form) {
-        
-    var url =    "https://go.roadchoice.com/l/999771/2023-09-14/qcrx"; //form.attr("action");
-    const formData = new FormData();
-  
-    form.querySelectorAll("input, textarea, select").forEach(function(element) {
-        var inputType = element.tagName.toUpperCase() === "INPUT" && element.type.toUpperCase();
-        if (inputType !== "BUTTON" && inputType !== "SUBMIT") {
-            formData.append(element.name, element.value);
-        }
-    });
-    debugger;
-
-    fetch(url, {
-        method: 'POST',
-        body: formData,
-    })
-        .then(response => {
-            if (!response.ok){
-                throw new Error(`HTTP Error! Status: ${response.status}`)
-            }
-            return response.text();
-        })
-        .then(data => {
-            console.log('Forms submission OK');
-        })
-        .catch(error => {
-            console.log('Error: Forms submission NOK');
-        });
-
-}
-
 function serialize(obj){
     let str = [];
     for(let p in obj){
@@ -91,11 +59,23 @@ function serialize(obj){
 
 function formSuccess() {
     debugger;
-    alert("Thank you for your subscription")        
+    alert("Thank you for your subscription");  
+    console.log("SUCCESS in the form submission");
+    const formTag = document.getElementById('pardot-form');
+    const success = document.createElement("span");
+    // Give it an id attribute called 'newSpan'
+    success.id = "successSpan";
+    // Create some content for the new element.
+    const success_content = document.createTextNode("Thank you for submitting the form");
+    // Apply that content to the new element
+    success.appendChild(success_content);
+    const parentDiv = formTag.parentNode;
+    // Replace existing node sp2 with the new span element sp1
+    parentDiv.replaceChild(success, formTag);    
 }
+
 function formError() {
-    debugger;
-    alert("ERROR: There's an error in your submission");  
+    debugger; 
     console.log("ERROR in the form submission");
     const formTag = document.getElementById('pardot-form');
 
