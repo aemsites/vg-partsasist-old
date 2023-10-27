@@ -63,14 +63,10 @@ function formSuccess() {
     console.log("SUCCESS in the form submission");
     const formTag = document.getElementById('pardot-form');
     const success = document.createElement("span");
-    // Give it an id attribute called 'newSpan'
     success.id = "successSpan";
-    // Create some content for the new element.
     const success_content = document.createTextNode("Thank you for submitting the form");
-    // Apply that content to the new element
     success.appendChild(success_content);
     const parentDiv = formTag.parentNode;
-    // Replace existing node sp2 with the new span element sp1
     parentDiv.replaceChild(success, formTag);    
 }
 
@@ -78,16 +74,11 @@ function formError() {
     debugger; 
     console.log("ERROR in the form submission");
     const formTag = document.getElementById('pardot-form');
-
     const error = document.createElement("span");
-    // Give it an id attribute called 'newSpan'
     error.id = "errorSpan";
-    // Create some content for the new element.
     const error_content = document.createTextNode("Error submitting the form");
-    // Apply that content to the new element
     error.appendChild(error_content);
     const parentDiv = formTag.parentNode;
-    // Replace existing node sp2 with the new span element sp1
     parentDiv.replaceChild(error, formTag);
 }       
 
