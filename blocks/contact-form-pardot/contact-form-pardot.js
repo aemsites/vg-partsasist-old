@@ -8,28 +8,23 @@ window.logResult= function(json) {
     }
 };
       
-async function makePardotFormCall(event, endpoint, form) {
-        
-    var url =    "https://go.roadchoice.com/l/999771/2023-09-14/qcrx"; //form.attr("action");
-    var dataURI =   {};
-    form.querySelectorAll("input, textarea, select").forEach(function(element) {
-        var inputType = element.tagName.toUpperCase() === "INPUT" && element.type.toUpperCase();
-        if (inputType !== "BUTTON" && inputType !== "SUBMIT") {
-            dataURI[element.name] = element.value;
-        }
-    });
-    debugger;
-    //dataURI['success_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
-    //dataURI['error_location'] = 'https://contact-us-form-spike--vg-partsasist--hlxsites.hlx.page/drafts/mvara/contact-us-pardot-form?success=true&callback=logResult';
-    
-    dataURI['callback'] = 'logResult';
-    var serializedData = serialize(dataURI);
+async function makePardotFormCall(event, endpoint, form) {     
+  var dataURI =   {};
+  form.querySelectorAll("input, textarea, select").forEach(function(element) {
+    var inputType = element.tagName.toUpperCase() === "INPUT" && element.type.toUpperCase();
+    if (inputType !== "BUTTON" && inputType !== "SUBMIT") {
+      dataURI[element.name] = element.value;
+    }
+  });
+  debugger;
+  dataURI['callback'] = 'logResult';
+  var serializedData = serialize(dataURI);
 
-    // Create the script element dynamically through JavaScript 
+  // Create the script element dynamically through JavaScript 
 	var scriptElement = document.createElement("script"); 
 		
 	// Set the src and id attributes of the script element 
-	scriptElement.setAttribute("src", url + '?' + serializedData); 
+	scriptElement.setAttribute("src", endpoint + '?' + serializedData); 
 	scriptElement.setAttribute("id", "jsonp"); 
 	var oldScriptElement= document.getElementById("jsonp"); 
 		
@@ -37,13 +32,13 @@ async function makePardotFormCall(event, endpoint, form) {
 	var head = document.getElementsByTagName("head")[0]; 
 	if(oldScriptElement == null) {		 
 		/* If there is no script element then append a new element to the head. */
-	    head.appendChild(scriptElement); 
+	  head.appendChild(scriptElement); 
 	} else { 	
 		/* If there is already a element in the head, then replace it with the new script element. */
 		head.replaceChild(scriptElement, oldScriptElement); 
-    }         
-    // prevent default  action
-    return false;
+  }         
+  // prevent default  action
+  return false;
 
 }
 
@@ -59,7 +54,6 @@ function serialize(obj){
 
 function formSuccess() {
     debugger;
-    alert("Thank you for your subscription");  
     console.log("SUCCESS in the form submission");
     const formTag = document.getElementById('pardot-form');
     const success = document.createElement("span");
@@ -117,7 +111,7 @@ export default async function decorate(block) {
       </div>
       <div class="form-element">
         <div class="required">Email Address</div>
-        <div><input type="text" name="email-address"/></div>
+        <div><input type="text" name="email"/></div>
       </div>
       <div class="form-element question">
         <div class="required">How can we help you?</div>
