@@ -1,7 +1,7 @@
 import { loadScript, sampleRUM } from '../../scripts/lib-franklin.js';
 
-const thankyouMessage = `<p class='pardot-forms-thanks-title'>Thank you</p>
-<p class='pardot-forms-thanks-text'>Your information has been successfully sent.</p>
+const thankyouMessage = `<p class='pardot-forms-thanks-title'>THANK YOU!</p>
+<p class='pardot-forms-thanks-text'>Your information has been submitted. Someone will be in touch with you shortly.</p>
 `;
 
 const errorMessage = `<p class='pardot-forms-error-title'>There's an error</p>
