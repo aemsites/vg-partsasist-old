@@ -94,6 +94,7 @@ async function loadEager(doc) {
     decorateMain(main);
     await waitForLCP(LCP_BLOCKS);
   }
+  await getPlaceholders();
 }
 
 /**
