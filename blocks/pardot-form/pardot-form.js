@@ -1,5 +1,5 @@
 import { loadScript, sampleRUM } from '../../scripts/lib-franklin.js';
-import { getTextLabel } from '../../scripts.js';
+import { getTextLabel } from '../../scripts/common.js';
 
 const thankyouMessage = `<p class='pardot-forms-thanks-title'>${getTextLabel('Successful submission title')}</p>
 <p class='pardot-forms-thanks-text'>${getTextLabel('Successful submission text')}</p>`;
