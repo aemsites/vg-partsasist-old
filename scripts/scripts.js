@@ -13,6 +13,9 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
+import {getPlaceholders,
+} from './common.js';
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'partsasist'; // add your RUM generation information here
 
