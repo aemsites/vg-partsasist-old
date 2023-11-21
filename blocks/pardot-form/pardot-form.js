@@ -1,11 +1,13 @@
 import { loadScript, sampleRUM } from '../../scripts/lib-franklin.js';
 import { getTextLabel } from '../../scripts/common.js';
 
-const thankyouMessage = `<p class='pardot-forms-thanks-title'>${getTextLabel('Successful submission title')}</p>
-<p class='pardot-forms-thanks-text'>${getTextLabel('Successful submission text')}</p>`;
+const successMessage = `<p class='pardot-form__title pardot-form__title--success'>${getTextLabel('Successful submission title')}</p>
+<p class='pardot-form__text pardot-form__text--success'>${getTextLabel('Successful submission text')}</p>
+`;
 
-const errorMessage = `<p class='pardot-forms-error-title'>${getTextLabel('Error submission title')}</p>
-<p class='pardot-forms-error-text'>${getTextLabel('Error submission text')}</p>`;
+const errorMessage = `<p class='pardot-form__title pardot-form__title--error'>${getTextLabel('Error submission title')}</p>
+<p class='pardot-form__text pardot-form__text--error'>${getTextLabel('Error submission text')}</p>
+`;
 
 // Form Block identifies the submit endpoint via these rules and in order
 // 1. action property on the submit button
@@ -13,15 +15,37 @@ const errorMessage = `<p class='pardot-forms-error-title'>${getTextLabel('Error 
 // 3. the path of the spreadsheet
 const SUBMIT_ACTION = '';
 
-//callback
-window.logResult= function(json) {
-    debugger;
-    if(json.result === "success"){
-        submissionSuccess();
-    } else if(json.result === "error") {
-        submissionFailure();
-    }
+async function submissionSuccess() {
+  sampleRUM('form:submit');
+  const successDiv = document.createElement('div');
+  successDiv.innerHTML = successMessage;
+  const form = document.querySelector('form[data-submitting=true]');
+  form.setAttribute('data-submitting', 'false');
+  form.replaceWith(successDiv);
+}
+
+async function submissionFailure() {
+  const errorDiv = document.createElement('div');
+  errorDiv.innerHTML = errorMessage;
+  const form = document.querySelector('form[data-submitting=true]');
+  form.setAttribute('data-submitting', 'false');
+  form.querySelector('button[type="submit"]').disabled = false;
+  form.replaceWith(errorDiv);
+}
+
+// callback
+window.logResult = function (json) {
+  if (json.result === 'success') {
+    submissionSuccess();
+  } else if (json.result === 'error') {
+    submissionFailure();
+  }
 };
+
+function serialize(obj) {
+  const str = Object.keys(obj).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
+  return str.join('&');
+}
 
 function generateUnique() {
   return new Date().valueOf() + Math.random();
@@ -40,44 +64,16 @@ function constructPayload(form) {
       }
     }
   });
-  payload['callback'] = 'logResult';
+  payload.callback = 'logResult';
   return { payload };
-}
-
-async function submissionSuccess() {
-  sampleRUM('form:submit');
-  const thankyouDiv = document.createElement('div');
-  thankyouDiv.innerHTML = thankyouMessage;
-  const form = document.querySelector('form');
-  form.replaceWith(thankyouDiv);
-}
-
-async function submissionFailure() {
-  const errorDiv = document.createElement('div');
-  errorDiv.innerHTML = errorMessage;
-  const form = document.querySelector('form');
-  form.setAttribute('data-submitting', 'false');
-  form.querySelector('button[type="submit"]').disabled = false;
-  form.replaceWith(errorDiv);
 }
 
 async function prepareRequest(form) {
   const { payload } = constructPayload(form);
-  const body = JSON.stringify({ data: payload });
   const url = form.dataset.action;
 
-  var serializedData = serialize(payload);
-  loadScript(url + '?' + serializedData, { type: 'text/javascript', charset: 'UTF-8'});
-}
-
-function serialize(obj){
-  let str = [];
-  for(let p in obj){
-      if(obj.hasOwnProperty(p)){
-          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-      }
-  }
-  return str.join('&');
+  const serializedData = serialize(payload);
+  loadScript(`${url}?${serializedData}`, { type: 'text/javascript', charset: 'UTF-8' });
 }
 
 async function handleSubmit(form) {
@@ -351,7 +347,6 @@ function decorateValidation(form) {
     el.addEventListener('invalid', showError);
   });
 }
-
 
 async function createForm(formURL) {
   const { pathname } = new URL(formURL);
