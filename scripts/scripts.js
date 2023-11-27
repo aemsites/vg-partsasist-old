@@ -13,7 +13,8 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
-import {getPlaceholders,
+import {
+  getPlaceholders,
 } from './common.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list

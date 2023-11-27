@@ -34,7 +34,7 @@ async function submissionFailure() {
 }
 
 // callback
-window.logResult = function (json) {
+window.logResult = function logResult(json) {
   if (json.result === 'success') {
     submissionSuccess();
   } else if (json.result === 'error') {
