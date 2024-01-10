@@ -197,6 +197,30 @@ export function decorateBlock(block) {
 }
 
 /**
+ * loads a script into head.
+ * @param {string} url the script location
+ * @param {Object} attrs additional data to add
+ */
+export async function loadScript(url, attrs) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    if (attrs) {
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+      for (const attr in attrs) {
+        script.setAttribute(attr, attrs[attr]);
+      }
+    }
+
+    script.onload = () => resolve(script);
+    script.onerror = reject;
+
+    const head = document.querySelector('head');
+    head.append(script);
+  });
+}
+
+/**
  * Extracts the config from a block.
  * @param {Element} block The block element
  * @returns {object} The block config
