@@ -40,21 +40,26 @@ window.OptanonWrapper = () => {};
 // then add the IDs to the script that will be injected.
 const campaignMeta = document.querySelector('meta[name="campaign-id"]');
 const businessUnitMeta = document.querySelector('meta[name="business-unit-id"]');
+const pardotUrlMeta = document.querySelector('meta[name="hostname"]');
 const pardotForm = document.querySelector('.pardot-form.block');
 
 if (campaignMeta && businessUnitMeta && pardotForm) {
   const campaignId = campaignMeta.getAttribute('content');
   const businessUnitId = businessUnitMeta.getAttribute('content');
-  // create a fragment to hold the script
+  const pardotUrl = pardotUrlMeta && pardotUrlMeta.getAttribute('content');
+  const pardotUrlDefault = 'go.pardot.com';
+  const hostname = pardotUrl || pardotUrlDefault;
+  const host = hostname.split('.').slice(1).join('.');
+  // Inject Pardot script into the page
   const pardotScript = document.createRange().createContextualFragment(`
     <script type="text/javascript">
       piAId = '${businessUnitId}';
       piCId = '${campaignId}';
-      piHostname = '[pi.pardot.com](http://pi.pardot.com/)';
+      goHostname = '[${hostname}](http://${hostname}/)';
       (function() {
         function async_load(){
           var s = document.createElement('script'); s.type = 'text/javascript';
-          s.src = ('https:' == document.location.protocol ? 'https://pi/' : 'http://cdn/') + '.[pardot.com/pd.js](http://pardot.com/pd.js)';
+          s.src = ('https:' == document.location.protocol ? 'https://go/' : 'http://cdn/') + '.[${host}/pd.js](http://${host}/pd.js)';
           var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
         }
         if(window.attachEvent) { window.attachEvent('onload', async_load); }
