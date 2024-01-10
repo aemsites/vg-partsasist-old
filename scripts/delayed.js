@@ -33,3 +33,35 @@ if (window.location.host.includes('partsasist.com')) {
 fireGTM(window, document, 'script', 'dataLayer', 'GTM-NRP6TBV');
 window.OptanonWrapper = () => {};
 // OneTrust Cookies Consent Notice end
+
+// Contact form campaign Start
+
+// Check for Campaign & Business Unit IDs in metadata & Pardot form block on the page
+// then add the IDs to the script that will be injected.
+const campaignMeta = document.querySelector('meta[name="campaign-id"]');
+const businessUnitMeta = document.querySelector('meta[name="business-unit-id"]');
+const pardotForm = document.querySelector('.pardot-form.block');
+
+if (campaignMeta && businessUnitMeta && pardotForm) {
+  const campaignId = campaignMeta.getAttribute('content');
+  const businessUnitId = businessUnitMeta.getAttribute('content');
+  // create a fragment to hold the script
+  const pardotScript = document.createRange().createContextualFragment(`
+    <script type="text/javascript">
+      piAId = '${businessUnitId}';
+      piCId = '${campaignId}';
+      piHostname = '[pi.pardot.com](http://pi.pardot.com/)';
+      (function() {
+        function async_load(){
+          var s = document.createElement('script'); s.type = 'text/javascript';
+          s.src = ('https:' == document.location.protocol ? 'https://pi/' : 'http://cdn/') + '.[pardot.com/pd.js](http://pardot.com/pd.js)';
+          var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+        }
+        if(window.attachEvent) { window.attachEvent('onload', async_load); }
+        else { window.addEventListener('load', async_load, false); }
+      })();
+    </script>
+  `);
+  document.head.appendChild(pardotScript);
+}
+// Contact form campaign End
