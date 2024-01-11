@@ -47,7 +47,7 @@ if (campaignMeta && businessUnitMeta && pardotForm) {
   const campaignId = campaignMeta.getAttribute('content');
   const businessUnitId = businessUnitMeta.getAttribute('content');
   const pardotUrlRaw = pardotUrlMeta && pardotUrlMeta.getAttribute('content');
-  const pardotUrl = pardotUrlRaw.contains('http') ? new URL(pardotUrlRaw).hostname : pardotUrlRaw;
+  const pardotUrl = pardotUrlRaw.includes('http') ? new URL(pardotUrlRaw).hostname : pardotUrlRaw;
   const pardotUrlDefault = 'go.pardot.com';
   const hostname = pardotUrl || pardotUrlDefault;
   const host = hostname.split('.').slice(1).join('.');
@@ -56,13 +56,12 @@ if (campaignMeta && businessUnitMeta && pardotForm) {
     <script type="text/javascript">
       piAId = '${businessUnitId}';
       piCId = '${campaignId}';
-      goHostname = 'https://${hostname}/';
+      goHostname = '${hostname}';
       (function() {
         function async_load(){
           var s = document.createElement('script'); s.type = 'text/javascript';
           s.src = ('https:' == document.location.protocol ? 'https://go' : 'http://cdn') + '.${host}/pd.js';
-          var c = document.getElementsByTagName('script')[0];
-          c.parentNode.insertBefore(s, c);
+          var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
         }
         if(window.attachEvent) { window.attachEvent('onload', async_load); }
         else { window.addEventListener('load', async_load, false); }
