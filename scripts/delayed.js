@@ -40,14 +40,16 @@ window.OptanonWrapper = () => {};
 // then add the IDs to the script that will be injected.
 const campaignMeta = document.querySelector('meta[name="campaign-id"]');
 const businessUnitMeta = document.querySelector('meta[name="business-unit-id"]');
-const pardotUrlMeta = document.querySelector('meta[name="hostname"]');
+const pardotFormBlock = document.querySelector('.pardot-form.block');
+const pardotSubmitBtn = pardotFormBlock && pardotFormBlock.querySelector('button[type="submit"]');
 const pardotForm = document.querySelector('.pardot-form.block');
 
 if (campaignMeta && businessUnitMeta && pardotForm) {
   const campaignId = campaignMeta.getAttribute('content');
   const businessUnitId = businessUnitMeta.getAttribute('content');
-  const pardotUrlRaw = pardotUrlMeta && pardotUrlMeta.getAttribute('content');
-  const pardotUrl = pardotUrlRaw.includes('http') ? new URL(pardotUrlRaw).hostname : pardotUrlRaw;
+  /** @type {string | null} */
+  const pardotUrlRaw = pardotSubmitBtn && pardotSubmitBtn.formAction;
+  const pardotUrl = pardotUrlRaw && new URL(pardotUrlRaw).hostname;
   const pardotUrlDefault = 'go.pardot.com';
   const hostname = pardotUrl || pardotUrlDefault;
   const host = hostname.split('.').slice(1).join('.');
