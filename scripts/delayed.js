@@ -33,3 +33,43 @@ if (window.location.host.includes('partsasist.com')) {
 fireGTM(window, document, 'script', 'dataLayer', 'GTM-NRP6TBV');
 window.OptanonWrapper = () => {};
 // OneTrust Cookies Consent Notice end
+
+// Contact form campaign Start
+
+// Check for Campaign & Business Unit IDs in metadata & Pardot form block on the page
+// then add the IDs to the script that will be injected.
+const campaignMeta = document.querySelector('meta[name="campaign-id"]');
+const businessUnitMeta = document.querySelector('meta[name="business-unit-id"]');
+const pardotFormBlock = document.querySelector('.pardot-form.block');
+const pardotSubmitBtn = pardotFormBlock && pardotFormBlock.querySelector('button[type="submit"]');
+const pardotForm = document.querySelector('.pardot-form.block');
+
+if (campaignMeta && businessUnitMeta && pardotForm) {
+  const campaignId = campaignMeta.getAttribute('content');
+  const businessUnitId = businessUnitMeta.getAttribute('content');
+  /** @type {string | null} */
+  const pardotUrlRaw = pardotSubmitBtn && pardotSubmitBtn.formAction;
+  const pardotUrl = pardotUrlRaw && new URL(pardotUrlRaw).hostname;
+  const pardotUrlDefault = 'go.pardot.com';
+  const hostname = pardotUrl || pardotUrlDefault;
+  const host = hostname.split('.').slice(1).join('.');
+  // Inject Pardot script into the page
+  const pardotScript = document.createRange().createContextualFragment(`
+    <script type="text/javascript">
+      piAId = '${businessUnitId}';
+      piCId = '${campaignId}';
+      goHostname = '${hostname}';
+      (function() {
+        function async_load(){
+          var s = document.createElement('script'); s.type = 'text/javascript';
+          s.src = ('https:' == document.location.protocol ? 'https://go' : 'http://cdn') + '.${host}/pd.js';
+          var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+        }
+        if(window.attachEvent) { window.attachEvent('onload', async_load); }
+        else { window.addEventListener('load', async_load, false); }
+      })();
+    </script>
+  `);
+  document.head.appendChild(pardotScript);
+}
+// Contact form campaign End
