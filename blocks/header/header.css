@@ -73,7 +73,7 @@ header nav .nav-hamburger {
   color: rgba(var(--c-white-rgb), var(--c-alpha));
 }
 
-header nav[aria-expanded=true] .nav-hamburger {
+header nav[aria-expanded="true"] .nav-hamburger {
   --c-alpha: var(--c-nav-active);
 }
 
@@ -114,28 +114,28 @@ header nav .nav-hamburger-icon::after {
   background: currentcolor;
 }
 
-header nav[aria-expanded=false] .nav-hamburger-icon,
-header nav[aria-expanded=false] .nav-hamburger-icon::before,
-header nav[aria-expanded=false] .nav-hamburger-icon::after {
+header nav[aria-expanded="false"] .nav-hamburger-icon,
+header nav[aria-expanded="false"] .nav-hamburger-icon::before,
+header nav[aria-expanded="false"] .nav-hamburger-icon::after {
   height: 2px;
   border-radius: 2px;
   background: currentcolor;
 }
 
-header nav[aria-expanded=false] .nav-hamburger-icon::before {
+header nav[aria-expanded="false"] .nav-hamburger-icon::before {
   top: -6px;
 }
 
-header nav[aria-expanded=false] .nav-hamburger-icon::after {
+header nav[aria-expanded="false"] .nav-hamburger-icon::after {
   top: 6px;
 }
 
-header nav[aria-expanded=true] .nav-hamburger-icon {
+header nav[aria-expanded="true"] .nav-hamburger-icon {
   height: 22px;
 }
 
-header nav[aria-expanded=true] .nav-hamburger-icon::before,
-header nav[aria-expanded=true] .nav-hamburger-icon::after {
+header nav[aria-expanded="true"] .nav-hamburger-icon::before,
+header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   top: 3px;
   left: 1px;
   transform: rotate(45deg);
@@ -145,7 +145,7 @@ header nav[aria-expanded=true] .nav-hamburger-icon::after {
   border-radius: 2px;
 }
 
-header nav[aria-expanded=true] .nav-hamburger-icon::after {
+header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   top: unset;
   bottom: 3px;
   transform: rotate(-45deg);
@@ -169,7 +169,7 @@ header nav .nav-sections {
   background-color: var(--overlay-color);
 }
 
-header nav[aria-expanded=true] .nav-sections {
+header nav[aria-expanded="true"] .nav-sections {
   display: block;
   visibility: visible;
   align-self: start;
@@ -190,7 +190,7 @@ header nav .nav-sections ul > li *:not(strong, [target]) {
   background-color: var(--c-grey);
 }
 
-header nav[aria-expanded=true] .nav-sections ul li {
+header nav[aria-expanded="true"] .nav-sections ul li {
   border-block-end: 1px solid var(--c-white);
   display: inline-flex;
   padding-inline-start: 1rem;
@@ -198,11 +198,11 @@ header nav[aria-expanded=true] .nav-sections ul li {
   color: rgba(var(--c-white-rgb), var(--c-alpha));
 }
 
-header nav[aria-expanded=true] .nav-sections li:is(.active, :has([target])) {
+header nav[aria-expanded="true"] .nav-sections li:is(.active, :has([target])) {
   --c-alpha: var(--c-nav-active);
 }
 
-header nav[aria-expanded=true] .nav-sections ul li:has([target='_blank']) {
+header nav[aria-expanded="true"] .nav-sections ul li:has([target='_blank']) {
   order: -1;
   background-color: var(--c-login);
 }
@@ -219,7 +219,7 @@ header nav > div:not([class]):last-child {
   display: none;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   /* header and nav layout */
   header nav {
     padding: 0 2rem;
@@ -231,7 +231,7 @@ header nav > div:not([class]):last-child {
   }
 }
 
-@media (min-width: 992px) {
+@media (width >= 992px) {
   /* header and nav layout */
   header nav {
     display: flex;
@@ -239,7 +239,7 @@ header nav > div:not([class]):last-child {
     max-width: 992px;
   }
 
-  header nav[aria-expanded=true] {
+  header nav[aria-expanded="true"] {
     min-height: 0;
     overflow: visible;
   }
@@ -257,7 +257,7 @@ header nav > div:not([class]):last-child {
     white-space: nowrap;
   }
 
-  header nav[aria-expanded=true] .nav-sections {
+  header nav[aria-expanded="true"] .nav-sections {
     align-self: unset;
   }
 
@@ -281,7 +281,7 @@ header nav > div:not([class]):last-child {
     border-width: 2px 2px 0 0;
   }
 
-  header nav .nav-sections .nav-drop[aria-expanded=true]::after {
+  header nav .nav-sections .nav-drop[aria-expanded="true"]::after {
     top: unset;
     bottom: .5em;
     transform: rotate(315deg);
@@ -303,16 +303,16 @@ header nav > div:not([class]):last-child {
     background-color: inherit;
   }
 
-  header nav[aria-expanded=true] .nav-sections ul li {
+  header nav[aria-expanded="true"] .nav-sections ul li {
     border-block-end: none;
   }
 
-  header nav[aria-expanded=true] .nav-sections ul li:has([target='_blank']) {
+  header nav[aria-expanded="true"] .nav-sections ul li:has([target='_blank']) {
     order: initial;
   }
 
   header nav .nav-sections ul > li *:not(strong, [target]),
-  header nav[aria-expanded=true] .nav-sections ul li:has([target='_blank']) {
+  header nav[aria-expanded="true"] .nav-sections ul li:has([target='_blank']) {
     background-color: inherit;
   }
 
@@ -353,7 +353,7 @@ header nav > div:not([class]):last-child {
   }
 }
 
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
   header nav {
     max-width: 1140px;
     padding: 0;

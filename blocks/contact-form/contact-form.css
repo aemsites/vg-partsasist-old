@@ -81,7 +81,7 @@
     outline: none;
 }
 
-[type=submit]:not(:disabled) {
+[type="submit"]:not(:disabled) {
     cursor: pointer;
 }
 
@@ -90,7 +90,7 @@
     color: #c00;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .row {
         flex-direction: initial;
         gap: 4rem;

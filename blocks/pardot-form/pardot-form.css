@@ -84,7 +84,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .pardot-form-container form {
         display: flex;
         flex-flow: row wrap;
