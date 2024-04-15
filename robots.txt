@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://partsasist.com/sitemap.xml
+Sitemap: https://www.partsasist.com/sitemap.xml
