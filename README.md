@@ -2,8 +2,8 @@
 Franklin site for https://partsasist.com/
 
 ## Environments
-- Preview: https://main--vg-partsasist--hlxsites.hlx.page/
-- Live: https://main--vg-partsasist--hlxsites.hlx.live/
+- Preview: https://main--vg-partsasist--hlxsites.aem.page/
+- Live: https://main--vg-partsasist--hlxsites.aem.live/
 
 ## Installation
 
