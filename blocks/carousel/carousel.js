@@ -51,9 +51,11 @@ export default function decorate(block) {
   const iconNext = document.createElement('img');
   iconNext.src = '../../icons/chevron-left.svg';
   iconNext.classList.add('prev');
+  iconNext.alt = 'Next';
   const iconPrev = document.createElement('img');
   iconPrev.src = '../../icons/chevron-right.svg';
   iconPrev.classList.add('next');
+  iconPrev.alt = 'Previous';
 
   controlNext.append(iconNext);
   controlPrev.append(iconPrev);

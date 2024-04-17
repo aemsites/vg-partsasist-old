@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 function hideModal(modalDiv) {
   modalDiv.classList.remove('show-modal');

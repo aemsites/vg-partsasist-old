@@ -1,4 +1,4 @@
-import { readBlockConfig } from '../../scripts/lib-franklin.js';
+import { readBlockConfig } from '../../scripts/aem.js';
 
 function getFormElement(fieldName, type = 'input') {
   return document.querySelector(`#contact ${type}[name=${fieldName}]`);

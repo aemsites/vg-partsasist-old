@@ -1,4 +1,4 @@
-import { decorateIcons, decorateButtons, getMetadata } from '../../scripts/lib-franklin.js';
+import { decorateIcons, decorateButtons, getMetadata } from '../../scripts/aem.js';
 
 // media query match that indicates mobile/tablet width
 const MQ = window.matchMedia('(min-width: 992px)');
